@@ -1,7 +1,7 @@
 # Preface {.unnumbered}
 
 
-This pages are an update to the __WRC Research Project Number K5/2730//3__. Since the this project was completed much has happened in _Data Science_...
+This web book is an update to the __WRC Research Project Number K5/2730//3__. Since the this project was completed much has happened in _Data Science_...
 
 
 
