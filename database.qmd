@@ -1,0 +1,28 @@
+# Databases
+
+
+```{r}
+#| include=FALSE
+
+library(knitr)
+library(tidyverse)
+library(imagic)
+library(broman)
+```
+
+
+## Example Water Quality Data 
+
+@tbl-imagicdata shows the structure of the `wtw_data` in the `imagic` package. The data has `r add_commas(nrow(wtw_data))` rows.
+
+
+```{r}
+#| label: tbl-imagicdata
+#| tbl-cap: "Data From wtw_data in the imagic Package"
+
+wtw_data %>% 
+  sample_n(10) %>% 
+  knitr::kable()
+
+
+```

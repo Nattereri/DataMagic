@@ -2,29 +2,36 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "DataMagic",
+    "title": "Data Magic",
     "section": "",
-    "text": "This is a Quarto book.\nTo learn more about Quarto books visit https://quarto.org/docs/books.\n\n1 + 1\n\n[1] 2"
+    "text": "This pages are an update to the WRC Research Project Number K5/2730//3. Since the this project was completed much has happened in Data Science…\nWhy South Africa needs Data Science\nWater Utilities are known for being data rich organisations. Water Utilities collect raw water and process (treatment) data, chemical dosage rate data and flow records, operational monitoring data, treatment plant data, compliance data for final water reservoirs and distribution systems, water quality at the final contact tank, distribution reservoirs, network and consumer complaint information. Many of the larger water utilities have online instrumentation such as Supervisory Control and Data Acquisition (SCADA) which collects information on flow and quality parameters which is used by the process control staff for operational purposes and quality assurance and control."
   },
   {
     "objectID": "intro.html",
     "href": "intro.html",
     "title": "1  Introduction",
     "section": "",
-    "text": "See Knuth (1984) for additional discussion of literate programming.\n\n1 + 1\n\n[1] 2\n\n\n\n\n\n\nKnuth, Donald E. 1984. “Literate Programming.” Comput. J. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97."
+    "text": "The approach (methodology and practice) to data science has been changed dramatically in recent years with the continuing development of open source software"
+  },
+  {
+    "objectID": "intro.html#install-r-rstudio-and-packages",
+    "href": "intro.html#install-r-rstudio-and-packages",
+    "title": "1  Introduction",
+    "section": "1.1 Install R, RStudio and Packages",
+    "text": "1.1 Install R, RStudio and Packages\n\nDownload and install the latest version of R https://cran.r-project.org/bin/windows/base/. Download the version for your operating system; R can be downloaded for Windows, Mac & Linux.\n\nIt is recommended R is used through the RStudio IDE. Download and install the latest version of RStudio from their web page https://www.rstudio.com/products/rstudio/#Desktop. Download the free desktop version.\n\n\n1.1.1 Install the imagic Package from GitHub\nThe imagic package contains example data (e.g. wtw_data) and functions that help with the Data Science of water treatment works monitoring results. To install this package use the code below in the console (see Figure ); one line at a time. The package is installed from GitHub.\n\ninstall.packages(\"devtools\")\n\ndevtools::install_github(\"Nattereri/imagic\")"
+  },
+  {
+    "objectID": "database.html",
+    "href": "database.html",
+    "title": "2  Databases",
+    "section": "",
+    "text": "Table 2.1 shows the structure of the wtw_data in the imagic package. The data has 494,199 rows.\n\nwtw_data %>% \n  sample_n(10) %>% \n  knitr::kable()\n\n\n\nTable 2.1: Data From wtw_data in the imagic Package\n\n\nDescription\nSample_Date\nDeterminand\nResult\nUnits\n\n\n\n\nMirkwood WTW\n2001-04-08\nColony Count 37\n0\nmL\n\n\nRivendell WTW\n2011-02-07\nOdour\nNIL\n-\n\n\nDale WTW\n2002-01-20\nE.coli\n0\nMPN/100mL\n\n\nGrey Havens WTW\n2001-12-06\nTotal Chlorine\n1.5\nmg Cl2/L\n\n\nMirkwood WTW\n2003-09-26\nColiforms\n0\nMPN/100mL\n\n\nHobbiton WTW\n2011-08-20\nColony Count 21\n0\nmL\n\n\nMinas Tirith WTW\n2013-04-02\nColiforms\n0\nMPN/100mL\n\n\nDale WTW\n2004-10-06\nTaste\nNIL\n-\n\n\nIsengard WTW\n2001-06-22\nTotal Chlorine\n1.4\nmg Cl2/L\n\n\nEdoras WTW\n2010-02-08\npH\n7.70\n-"
   },
   {
     "objectID": "summary.html",
     "href": "summary.html",
-    "title": "2  Summary",
+    "title": "3  Summary",
     "section": "",
     "text": "1 + 1\n\n[1] 2"
-  },
-  {
-    "objectID": "references.html",
-    "href": "references.html",
-    "title": "References",
-    "section": "",
-    "text": "Knuth, Donald E. 1984. “Literate Programming.” Comput.\nJ. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97."
   }
 ]

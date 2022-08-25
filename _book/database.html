@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Data Magic - 3&nbsp; Summary</title>
+<title>Data Magic - 2&nbsp; Databases</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -88,8 +88,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./references.html" rel="next">
-<link href="./database.html" rel="prev">
+<link href="./summary.html" rel="next">
+<link href="./intro.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -128,7 +128,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Summary</span></h1>
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Databases</span></h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -163,12 +163,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./database.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Databases</span></a>
+  <a href="./database.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Databases</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./summary.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Summary</span></a>
+  <a href="./summary.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Summary</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -181,14 +181,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </nav>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#example-water-quality-data" id="toc-example-water-quality-data" class="nav-link active" data-scroll-target="#example-water-quality-data"> <span class="header-section-number">2.1</span> Example Water Quality Data</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Summary</span></h1>
+<h1 class="title d-none d-lg-block"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Databases</span></h1>
 </div>
 
 
@@ -202,15 +208,105 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </header>
 
-<p>In summary, this book has no content whatsoever.</p>
+<section id="example-water-quality-data" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="example-water-quality-data"><span class="header-section-number">2.1</span> Example Water Quality Data</h2>
+<p><a href="#tbl-imagicdata">Table&nbsp;<span>2.1</span></a> shows the structure of the <code>wtw_data</code> in the <code>imagic</code> package. The data has 494,199 rows.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 2</code></pre>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>wtw_data <span class="sc">%&gt;%</span> </span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sample_n</span>(<span class="dv">10</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="tbl-imagicdata" class="anchored">
+<table class="table table-sm table-striped">
+<caption>Table 2.1: Data From wtw_data in the imagic Package</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Description</th>
+<th style="text-align: left;">Sample_Date</th>
+<th style="text-align: left;">Determinand</th>
+<th style="text-align: left;">Result</th>
+<th style="text-align: left;">Units</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Mirkwood WTW</td>
+<td style="text-align: left;">2001-04-08</td>
+<td style="text-align: left;">Colony Count 37</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">mL</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Rivendell WTW</td>
+<td style="text-align: left;">2011-02-07</td>
+<td style="text-align: left;">Odour</td>
+<td style="text-align: left;">NIL</td>
+<td style="text-align: left;">-</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Dale WTW</td>
+<td style="text-align: left;">2002-01-20</td>
+<td style="text-align: left;">E.coli</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">MPN/100mL</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Grey Havens WTW</td>
+<td style="text-align: left;">2001-12-06</td>
+<td style="text-align: left;">Total Chlorine</td>
+<td style="text-align: left;">1.5</td>
+<td style="text-align: left;">mg Cl2/L</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Mirkwood WTW</td>
+<td style="text-align: left;">2003-09-26</td>
+<td style="text-align: left;">Coliforms</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">MPN/100mL</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Hobbiton WTW</td>
+<td style="text-align: left;">2011-08-20</td>
+<td style="text-align: left;">Colony Count 21</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">mL</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Minas Tirith WTW</td>
+<td style="text-align: left;">2013-04-02</td>
+<td style="text-align: left;">Coliforms</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">MPN/100mL</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Dale WTW</td>
+<td style="text-align: left;">2004-10-06</td>
+<td style="text-align: left;">Taste</td>
+<td style="text-align: left;">NIL</td>
+<td style="text-align: left;">-</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Isengard WTW</td>
+<td style="text-align: left;">2001-06-22</td>
+<td style="text-align: left;">Total Chlorine</td>
+<td style="text-align: left;">1.4</td>
+<td style="text-align: left;">mg Cl2/L</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Edoras WTW</td>
+<td style="text-align: left;">2010-02-08</td>
+<td style="text-align: left;">pH</td>
+<td style="text-align: left;">7.70</td>
+<td style="text-align: left;">-</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 </div>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -294,13 +390,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./database.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Databases</span></span>
+      <a href="./intro.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./references.html" class="pagination-link">
-        <span class="nav-page-text">References</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./summary.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Summary</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

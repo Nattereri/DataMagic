@@ -2,12 +2,13 @@ project:
   type: book
 
 book:
-  title: "DataMagic"
-  author: "Steve Markham"
-  date: "19/08/2022"
+  title: "Data Magic"
+  author: "Leanne Coetzee & Steve Markham"
+  date: "08/25/2022"
   chapters:
     - index.qmd
     - intro.qmd
+    - database.qmd
     - summary.qmd
     - references.qmd
 

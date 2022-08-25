@@ -1,9 +1,28 @@
 # Introduction
 
-This is a book created from markdown and executable code.
+The approach (methodology and practice) to _data science_ has been changed dramatically in recent years with the continuing development of open source software
 
-See @knuth84 for additional discussion of literate programming.
+* R and its many packages
+* RStudio  
+* Quarto®
 
-```{r}
-1 + 1
+
+## Install R, RStudio and Packages  
+
+1. Download and install the latest version of R  <https://cran.r-project.org/bin/windows/base/>. Download the version for your operating system; R can be downloaded for Windows, Mac & Linux.    
+2. It is recommended R is used through the _RStudio_ IDE. Download and install the latest version of RStudio from their web page <https://www.rstudio.com/products/rstudio/#Desktop>.  Download the _free_ desktop version.
+
+### Install the _imagic_ Package from GitHub
+
+The `imagic` package contains example data (e.g. wtw_data) and functions that help with the _Data Science_ of water treatment works monitoring results. To install this package use the code below in the console (see Figure ); _one line at a time_. The package is installed from GitHub. 
+
+```{r} 
+#| echo=TRUE, 
+#| eval=FALSE
+
+install.packages("devtools")
+
+devtools::install_github("Nattereri/imagic")
+
+
 ```
