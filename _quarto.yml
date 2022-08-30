@@ -4,11 +4,13 @@ project:
 book:
   title: "Data Magic"
   author: "Leanne Coetzee & Steve Markham"
-  date: "08/25/2022"
+  date: today
+  date-format: "D MMMM YYYY"
   chapters:
     - index.qmd
     - intro.qmd
     - database.qmd
+    - transformation.qmd
     - summary.qmd
     - references.qmd
 
