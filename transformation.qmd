@@ -8,9 +8,15 @@ library(knitr)
 library(tidyverse)
 library(imagic)
 library(broman)
+
+library(mosaic)
+
 library(DT)
 library(dygraphs)
 library(xts)
+
+library(gt)
+
 
 
 #<----------------------------------------------------------------------
@@ -30,21 +36,21 @@ MakeCenNumeric <- function (CenValue) {
 
 ```
 
-In this Chapter we describe the `R-code` on how to transform data into a usable block; this block of data is a sub set of information from the database that can  be used to create: 
+In this Chapter we describe, and show the `code`, on how to transform data into a usable selection; a sub-set of information from the database that can be used to create: 
 
 * summary statistics
 * tables of information
 * Time series graphs etc..
 
-_this is part of the __Transform__ process decribed in Figure \@ref(fig:nice-fig2)_
+_this is can be considered as part of __transform__ shown in @fig-dataschem.
 
-The sub set of information (the block of data) is created by:  
+The sub-set of information, the selection of data, is created by:  
 
 * filtering the database for a single determinand or sample location   
 * selecting data between a date range   
 
 
-## Filtering Data Example {#filter_det}
+## Filtering Data 
 
 
 The water quality database, `wtw_data` in the `imagic` package, contain measurements: 
@@ -56,22 +62,58 @@ The water quality database, `wtw_data` in the `imagic` package, contain measurem
 
 To create summary statistics and visualisation for individual (or groups of) determinands and select periods of time we _filter_ the `database`  so only the required  information is left.  
 
-The _Dynamic Table_ below shows the `wtw_data` filtered for the `Conductivity` determinand at the `Rivendell WTW` water treatment works.
+The _Dynamic Table_ below shows the `wtw_data` filtered for the `Conductivity` determinand at the `Rivendell WTW` water treatment works.  
+
 
 ```{r}
-# filter the wtw_data with the dplyr package and the filter function
+# filter the wtw_data with the filter function and the dplyr package
 riven_cond_data <- wtw_data %>% 
   filter(Description == "Rivendell WTW", Determinand == "Conductivity") 
 
-DT::datatable(riven_cond_data, options = list(pageLength = 5), caption = 'Conductivity at Rivendell WTW')
+# show the data with datatable function from the DT package
+DT::datatable(riven_cond_data, options = list(pageLength = 7), caption = 'Conductivity at Rivendell WTW')
 
 ```
-In the filtered data `riven_cond_data` we can see that there are now `r add_commas(nrow(riven_cond_data))` observations from a total of `r add_commas(nrow(wtw_data))` in the original database `wtw_data`. All the `riven_cond_data` is shown in the dynamic Table below. 
+In the filtered data `riven_cond_data` we can see that there are now `r add_commas(nrow(riven_cond_data))` observations from a total of `r add_commas(nrow(wtw_data))` in the original database `wtw_data`. All the `riven_cond_data` is shown in the dynamic Table below.  
+
+## Summary Statistics
+
+The list of data in the Table above is not very informative (if only because it is difficult to see all the data at one time); to gain a better understanding of the `Conductivity` data, summary statistics can be produced. The code below uses the `mosaic` package to calculate some _favourite_ stats using the function `favstats`; the summary statistics for the `Conductivity` for `Rivendell WTW` is shown in @tbl-sumstats. 
 
 
-## Visualise the Data as a Time Series  
+```{r}
+#| label: tbl-sumstats
+#| tbl-cap: "Summary Statistcs for Conductivity at Rivendell WTW"
 
-A key aspect of _data science_ is visualisation, especially the initial visualisation. Figure \@ref(fig:nice-fig3a) below shows the `Conductivity` for `Rivendell WTW` as a times series plot; the graph is also interactive so it can be _zoomed_ to show specific time periods and the mouse can hover on individual values.
+# Make the Result column a vector of numbers (no censored values)
+riven_cond_data$Result <- MakeCenNumeric(riven_cond_data$Result)
+
+# The summary statistics are saved into a variable riven_cond_stats 
+riven_cond_stats <- favstats(~Result, data = riven_cond_data)
+
+# riven_cond_stats is made into a the table (using the code below)
+riven_cond_stats %>% 
+  # Create the table with the gt package
+  gt() %>% 
+  # Style the header to black fill and white text
+  tab_style(
+    style = list(
+      cell_fill(color = "black"),
+      cell_text(color = "white"),
+      cell_text(weight = "bold")
+      ),
+    locations = cells_column_labels(
+      columns = c(everything())
+    )
+  )
+
+```
+
+
+
+## Data Time Series  
+
+A key aspect of _data science_ is visualisation, especially the initial visualisation. @fig-timecond shows the `Conductivity` for `Rivendell WTW` as a times series plot; the graph is also interactive so it can be _zoomed_ to show specific time periods and the mouse can hover on individual points to reveal the date and value.
 
 ```{r}
 #| label: fig-timecond

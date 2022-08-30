@@ -18,41 +18,55 @@
     "href": "intro.html#install-r-rstudio-and-packages",
     "title": "1  Introduction",
     "section": "1.1 Install R, RStudio and Packages",
-    "text": "1.1 Install R, RStudio and Packages\n\nDownload and install the latest version of R https://cran.r-project.org/bin/windows/base/. Download the version for your operating system; R can be downloaded for Windows, Mac & Linux.\n\nIt is recommended R is used through the RStudio IDE. Download and install the latest version of RStudio from their web page https://www.rstudio.com/products/rstudio/#Desktop. Download the free desktop version.\n\n\n1.1.1 Install the imagic Package from GitHub\nThe imagic package contains example data (e.g. wtw_data) and functions that help with the Data Science of water treatment works monitoring results. To install this package use the code below in the console (see Figure ); one line at a time. The package is installed from GitHub.\n\ninstall.packages(\"devtools\")\n\ndevtools::install_github(\"Nattereri/imagic\")"
+    "text": "1.1 Install R, RStudio and Packages\n\nDownload and install the latest version of R https://cran.r-project.org/bin/windows/base/. Download the version for your operating system; R can be downloaded for Windows, Mac & Linux.\n\nIt is recommended R is used through the RStudio IDE. Download and install the latest version of RStudio from their web page https://www.rstudio.com/products/rstudio/#Desktop. Download the free desktop version.\n\n\n1.1.1 Install the imagic Package from GitHub\nThe imagic package contains example data (e.g. wtw_data) and functions that help with the Data Science of water treatment works monitoring results. To install this package use the code below in the console (see Figure ); one line at a time. The package is installed from GitHub.\n\n\nShow the code\ninstall.packages(\"devtools\")\n\ndevtools::install_github(\"Nattereri/imagic\")"
+  },
+  {
+    "objectID": "intro.html#data-science",
+    "href": "intro.html#data-science",
+    "title": "1  Introduction",
+    "section": "1.2 Data Science",
+    "text": "1.2 Data Science\n\n\n\nFigure 1.1: Data Science Overview"
   },
   {
     "objectID": "database.html",
     "href": "database.html",
     "title": "2  Databases",
     "section": "",
-    "text": "Table 2.1 shows the structure of the wtw_data in the imagic package. The data has 494,199 rows.\n\nwtw_data %>% \n  sample_n(10) %>% \n  knitr::kable()\n\n\n\nTable 2.1: Data From wtw_data in the imagic Package\n\n\nDescription\nSample_Date\nDeterminand\nResult\nUnits\n\n\n\n\nMinas Tirith WTW\n2007-06-09\nOdour\nNIL\n-\n\n\nRivendell WTW\n2005-10-12\nConductivity\n10.83\nmS/m\n\n\nMirkwood WTW\n2012-05-25\npH\n7.90\n-\n\n\nEdoras WTW\n2001-02-24\nConductivity\n11.3\nmS/m\n\n\nGrey Havens WTW\n2012-06-23\nTurbidity\n0.27\nntu\n\n\nMinas Tirith WTW\n2016-02-21\npH\n8.00\n-\n\n\nDale WTW\n2009-07-07\nColony Count 21\n0\nmL\n\n\nMirkwood WTW\n2001-12-13\nE.coli\n0\nMPN/100mL\n\n\nMinas Tirith WTW\n2000-05-09\nTurbidity\n0.26\nntu\n\n\nHobbiton WTW\n2014-08-11\nOdour\nNil\n-"
+    "text": "Table 2.1 shows the structure of the wtw_data in the imagic package. The data has 494,199 rows.\n\n\nShow the code\nwtw_data %>% \n  sample_n(10) %>% \n  knitr::kable()\n\n\n\n\nTable 2.1: Data From wtw_data in the imagic Package\n\n\n\n\n\n\n\n\n\nDescription\nSample_Date\nDeterminand\nResult\nUnits\n\n\n\n\nHobbiton WTW\n2015-09-07\nTotal Chlorine\n1.40\nmg Cl2/L\n\n\nGrey Havens WTW\n2009-11-09\npH\n8.50\n-\n\n\nGrey Havens WTW\n2001-09-23\nColony Count 37\n0\nmL\n\n\nMirkwood WTW\n2006-06-02\nTurbidity\n0.32\nntu\n\n\nGrey Havens WTW\n2007-06-16\nTurbidity\n0.30\nntu\n\n\nMinas Tirith WTW\n2004-03-23\nColony Count 37\n0\nmL\n\n\nMirkwood WTW\n2005-04-22\npH\n8.30\n-\n\n\nMinas Tirith WTW\n2010-09-29\nOdour\nVMCHLORINOUS\n-\n\n\nGrey Havens WTW\n2017-04-07\nOdour\nVery Mild Chlorinous\n-\n\n\nIsengard WTW\n2000-04-19\nTotal Chlorine\n1\nmg Cl2/L"
   },
   {
     "objectID": "transformation.html",
     "href": "transformation.html",
     "title": "3  Transformation",
     "section": "",
-    "text": "In this Chapter we describe the R-code on how to transform data into a usable block; this block of data is a sub set of information from the database that can be used to create:\nthis is part of the Transform process decribed in Figure @ref(fig:nice-fig2)\nThe sub set of information (the block of data) is created by:"
+    "text": "In this Chapter we describe, and show the code, on how to transform data into a usable selection; a sub-set of information from the database that can be used to create:\n_this is can be considered as part of transform shown in Figure 1.1.\nThe sub-set of information, the selection of data, is created by:"
   },
   {
-    "objectID": "transformation.html#filter_det",
-    "href": "transformation.html#filter_det",
+    "objectID": "transformation.html#filtering-data",
+    "href": "transformation.html#filtering-data",
     "title": "3  Transformation",
-    "section": "3.1 Filtering Data Example",
-    "text": "3.1 Filtering Data Example\nThe water quality database, wtw_data in the imagic package, contain measurements:\n\nat various Water Treatment Works (WTW)\n\nfor a range of determinands\n\nover periods of time\n\nTo create summary statistics and visualisation for individual (or groups of) determinands and select periods of time we filter the database so only the required information is left.\nThe Dynamic Table below shows the wtw_data filtered for the Conductivity determinand at the Rivendell WTW water treatment works.\n\n# filter the wtw_data with the dplyr package and the filter function\nriven_cond_data <- wtw_data %>% \n  filter(Description == \"Rivendell WTW\", Determinand == \"Conductivity\") \n\nDT::datatable(riven_cond_data, options = list(pageLength = 5), caption = 'Conductivity at Rivendell WTW')\n\n\n\n\n\n\nIn the filtered data riven_cond_data we can see that there are now 6,245 observations from a total of 494,199 in the original database wtw_data. All the riven_cond_data is shown in the dynamic Table below."
+    "section": "3.1 Filtering Data",
+    "text": "3.1 Filtering Data\nThe water quality database, wtw_data in the imagic package, contain measurements:\n\nat various Water Treatment Works (WTW)\n\nfor a range of determinands\n\nover periods of time\n\nTo create summary statistics and visualisation for individual (or groups of) determinands and select periods of time we filter the database so only the required information is left.\nThe Dynamic Table below shows the wtw_data filtered for the Conductivity determinand at the Rivendell WTW water treatment works.\n\n\nShow the code\n# filter the wtw_data with the filter function and the dplyr package\nriven_cond_data <- wtw_data %>% \n  filter(Description == \"Rivendell WTW\", Determinand == \"Conductivity\") \n\n# show the data with datatable function from the DT package\nDT::datatable(riven_cond_data, options = list(pageLength = 7), caption = 'Conductivity at Rivendell WTW')\n\n\n\n\n\n\n\nIn the filtered data riven_cond_data we can see that there are now 6,245 observations from a total of 494,199 in the original database wtw_data. All the riven_cond_data is shown in the dynamic Table below."
   },
   {
-    "objectID": "transformation.html#visualise-the-data-as-a-time-series",
-    "href": "transformation.html#visualise-the-data-as-a-time-series",
+    "objectID": "transformation.html#summary-statistics",
+    "href": "transformation.html#summary-statistics",
     "title": "3  Transformation",
-    "section": "3.2 Visualise the Data as a Time Series",
-    "text": "3.2 Visualise the Data as a Time Series\nA key aspect of data science is visualisation, especially the initial visualisation. Figure @ref(fig:nice-fig3a) below shows the Conductivity for Rivendell WTW as a times series plot; the graph is also interactive so it can be zoomed to show specific time periods and the mouse can hover on individual values.\n\n# Make the result column a vector of numbers (no censored values)\nriven_cond_data$Result <- MakeCenNumeric(riven_cond_data$Result)\n\n# Make two separate vectors of the date and result (arranged by the date)\ndate_column <- riven_cond_data %>% \n    select(Sample_Date, Result) %>% \n    arrange(Sample_Date) %>% \n    pull(Sample_Date)\n\nresult_column <- riven_cond_data %>% \n    select(Sample_Date, Result) %>% \n    arrange(Sample_Date) %>% \n    pull(Result) \n\n# Create a time-series object\ncond_time_series <- xts(x=result_column, order.by=date_column)\n\n\ndygraph(cond_time_series, ylab = \"Conductivity (mS/m)\") %>%\n  dyRangeSelector() %>% \n  dyOptions(colors = RColorBrewer::brewer.pal(3, \"Dark2\")) %>% \n  dyHighlight(highlightCircleSize = 5, \n              highlightSeriesBackgroundAlpha = 0.2,\n              hideOnMouseOut = FALSE)\n\n\n\n\nFigure 3.1: Interactive Time Series Graph of the Conductivity for Rivendell WTW"
+    "section": "3.2 Summary Statistics",
+    "text": "3.2 Summary Statistics\nThe list of data in the Table above is not very informative (if only because it is difficult to see all the data at one time); to gain a better understanding of the Conductivity data, summary statistics can be produced. The code below uses the mosaic package to calculate some favourite stats using the function favstats; the summary statistics for the Conductivity for Rivendell WTW is shown in Table 3.1.\n\n\nShow the code\n# Make the Result column a vector of numbers (no censored values)\nriven_cond_data$Result <- MakeCenNumeric(riven_cond_data$Result)\n\n# The summary statistics are saved into a variable riven_cond_stats \nriven_cond_stats <- favstats(~Result, data = riven_cond_data)\n\n# riven_cond_stats is made into a the table (using the code below)\nriven_cond_stats %>% \n  # Create the table with the gt package\n  gt() %>% \n  # Style the header to black fill and white text\n  tab_style(\n    style = list(\n      cell_fill(color = \"black\"),\n      cell_text(color = \"white\"),\n      cell_text(weight = \"bold\")\n      ),\n    locations = cells_column_labels(\n      columns = c(everything())\n    )\n  )\n\n\n\n\n\n\nTable 3.1:  Summary Statistcs for Conductivity at Rivendell WTW \n  \n  \n    \n      min\n      Q1\n      median\n      Q3\n      max\n      mean\n      sd\n      n\n      missing\n    \n  \n  \n    1.44\n11.45\n13.64\n16.03\n41\n14.08085\n3.262842\n6245\n0"
+  },
+  {
+    "objectID": "transformation.html#data-time-series",
+    "href": "transformation.html#data-time-series",
+    "title": "3  Transformation",
+    "section": "3.3 Data Time Series",
+    "text": "3.3 Data Time Series\nA key aspect of data science is visualisation, especially the initial visualisation. Figure 3.1 shows the Conductivity for Rivendell WTW as a times series plot; the graph is also interactive so it can be zoomed to show specific time periods and the mouse can hover on individual points to reveal the date and value.\n\n\nShow the code\n# Make the result column a vector of numbers (no censored values)\nriven_cond_data$Result <- MakeCenNumeric(riven_cond_data$Result)\n\n# Make two separate vectors of the date and result (arranged by the date)\ndate_column <- riven_cond_data %>% \n    select(Sample_Date, Result) %>% \n    arrange(Sample_Date) %>% \n    pull(Sample_Date)\n\nresult_column <- riven_cond_data %>% \n    select(Sample_Date, Result) %>% \n    arrange(Sample_Date) %>% \n    pull(Result) \n\n# Create a time-series object\ncond_time_series <- xts(x=result_column, order.by=date_column)\n\n\ndygraph(cond_time_series, ylab = \"Conductivity (mS/m)\") %>%\n  dyRangeSelector() %>% \n  dyOptions(colors = RColorBrewer::brewer.pal(3, \"Dark2\")) %>% \n  dyHighlight(highlightCircleSize = 5, \n              highlightSeriesBackgroundAlpha = 0.2,\n              hideOnMouseOut = FALSE)\n\n\n\n\n\nFigure 3.1: Interactive Time Series Graph of the Conductivity for Rivendell WTW"
   },
   {
     "objectID": "summary.html",
     "href": "summary.html",
     "title": "4  Summary",
     "section": "",
-    "text": "1 + 1\n\n[1] 2"
+    "text": "Show the code\n1 + 1\n\n\n[1] 2"
   }
 ]

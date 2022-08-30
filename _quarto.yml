@@ -19,6 +19,10 @@ bibliography: references.bib
 format:
   html:
     theme: cosmo
+    fontsize: 1.1em
+    linestretch: 1.5
+    code-fold: true
+    code-summary: "Show the code"
   pdf:
     documentclass: scrreprt
 

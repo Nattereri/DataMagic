@@ -26,3 +26,8 @@ devtools::install_github("Nattereri/imagic")
 
 
 ```
+
+
+## Data Science 
+
+![Data Science Overview](images/DataScienceSchematic.PNG){#fig-dataschem}
