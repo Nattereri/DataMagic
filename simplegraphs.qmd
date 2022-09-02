@@ -17,59 +17,68 @@ library(glue)
 
 
 
-This chapter illustrates the range of graphs that can help describe the hidden relationships in the drinking water quality data.  
+This chapter illustrates the range of graphs that can help describe the hidden relationships in the drinking water quality data over time.  
 
 ## Plots of Determinands against Time 
 
-### Determinand on a Linear (Non Log) Scale 
+### Determinand on a Linear Scale 
 
 An example determinand time line using a linear scale is shown in @fig-timeline1 for temperature at _Mirkwood WTW_. Temperatures would normally be plotted using a linear scale; other determinands that would _generally_ be plotted on a linear scale are:
 
-* Ammonia  
-* Chlorine  
+* pH  
+* Free Chlorine 
+* Total Chlorine
 * Colour  
 * Conductivity  
-* metals (Fe, Mn, etc...)   
+* Turbidity
 
 ```{r}
 #| label: fig-timeline1
 #| fig-cap: "Example Time Line Plot on a Linear Scale"
 
 # filter the wtw_data with the filter function and the dplyr package
-mirkwood_temp_data <- wtw_data %>% 
-  filter(Description == "Mirkwood WTW", Determinand == "Temperature") 
+mirkwood_temp_data <- wtw_data %>%
+  filter(Description == "Mirkwood WTW", Determinand == "Temperature")
 
-S_date <- min(mirkwood_temp_data$Sample_Date)
-E_date <- max(mirkwood_temp_data$Sample_Date)
-
-
-
-Size <- 1
-Alpha <- 0.95
-Regression <- F
-Linear <- T
-Units <- glue("Temperature (\u00B0C)")
-Gcaption <- ""
-Gtitle <- ""
-TimeBreak <- "1 year"
-ParaColour <- "steelblue"
-
-ggplot(mirkwood_temp_data, aes(x=Sample_Date, y=Result)) + 
-      geom_point(size=Size, alpha=Alpha, colour = ParaColour) +
-      labs(title = Gtitle, 
-           y = Units, 
-           caption = Gcaption) +
-      scale_x_date(breaks = date_breaks(TimeBreak), labels = date_format("%Y"),
-                   limits = c(S_date, E_date)) + 
-      scale_colour_tableau(palette = "Tableau 10") +
-      facet_grid(Description ~ .) +
-      
-      theme_bw() +
-      theme (legend.position = "none") +
-      theme(axis.text.x = element_text(angle = 270, hjust = 1)) +
-      theme (axis.title.x = element_blank())
-    
-    if(Regression) {g <- g + geom_smooth(method = "lm", se = TRUE, linetype = "dashed", colour = "black")}
+ggplot(mirkwood_temp_data, aes(x = Sample_Date, y = Result)) +
+  geom_point(size = 1, alpha = 0.9, colour = "steelblue") +
+  labs(y = "Temperature (\u00B0C)") +
+  scale_x_date(breaks = date_breaks("1 year"), labels = date_format("%Y")) +
+  facet_grid(Description ~ .) +
+  theme_bw() +
+  theme(legend.position = "none") +
+  theme(axis.text.x = element_text(angle = 270, hjust = 1)) +
+  theme(axis.title.x = element_blank())
 
 ```
 
+### Determinand on a Log Scale  
+
+An example determinand time line using a log scale is shown in @fig-timeline2 for _Colony Count 21°C_ at _Mirkwood WTW_. By convention, and clarity, microbiological determinands are displayed on a log10 scale.
+
+
+```{r}
+#| label: fig-timeline2
+#| fig-cap: "Example Time Line Plot on a Log10 Scale"
+#| warning: false
+
+# filter the wtw_data with the filter function and the dplyr package
+mirkwood_CC_data <- wtw_data %>%
+  filter(Description == "Mirkwood WTW", Determinand == "Colony Count 21")
+
+ggplot(mirkwood_CC_data, aes(x = Sample_Date, y = Result)) +
+  geom_point(size = 1, alpha = 0.9, colour = "yellow4") +
+  labs(y = "Colony Count 21\u00B0C (mL)") +
+  scale_x_date(breaks = date_breaks("1 year"), labels = date_format("%Y")) +
+  scale_y_log10(
+    breaks = scales::trans_breaks("log10", function(x) 10^x),
+    labels = scales::trans_format("log10", scales::math_format(10^.x))
+  ) +
+  facet_grid(Description ~ .) +
+  theme_bw() +
+  theme(legend.position = "none") +
+  theme(axis.text.x = element_text(angle = 270, hjust = 1)) +
+  theme(axis.title.x = element_blank()) +
+  annotation_logticks(sides = "rl")
+
+```
