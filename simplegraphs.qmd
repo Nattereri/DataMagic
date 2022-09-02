@@ -1,0 +1,75 @@
+# Timeline Graphs {#ChapSGraphs}
+
+
+```{r}
+#| include=FALSE
+
+library(tidyverse)
+library(RColorBrewer)
+library(ggthemes)
+library(scales)
+library(knitr)
+library(scales)
+library(imagic)
+library(glue)
+
+```
+
+
+
+This chapter illustrates the range of graphs that can help describe the hidden relationships in the drinking water quality data.  
+
+## Plots of Determinands against Time 
+
+### Determinand on a Linear (Non Log) Scale 
+
+An example determinand time line using a linear scale is shown in @fig-timeline1 for temperature at _Mirkwood WTW_. Temperatures would normally be plotted using a linear scale; other determinands that would _generally_ be plotted on a linear scale are:
+
+* Ammonia  
+* Chlorine  
+* Colour  
+* Conductivity  
+* metals (Fe, Mn, etc...)   
+
+```{r}
+#| label: fig-timeline1
+#| fig-cap: "Example Time Line Plot on a Linear Scale"
+
+# filter the wtw_data with the filter function and the dplyr package
+mirkwood_temp_data <- wtw_data %>% 
+  filter(Description == "Mirkwood WTW", Determinand == "Temperature") 
+
+S_date <- min(mirkwood_temp_data$Sample_Date)
+E_date <- max(mirkwood_temp_data$Sample_Date)
+
+
+
+Size <- 1
+Alpha <- 0.95
+Regression <- F
+Linear <- T
+Units <- glue("Temperature (\u00B0C)")
+Gcaption <- ""
+Gtitle <- ""
+TimeBreak <- "1 year"
+ParaColour <- "steelblue"
+
+ggplot(mirkwood_temp_data, aes(x=Sample_Date, y=Result)) + 
+      geom_point(size=Size, alpha=Alpha, colour = ParaColour) +
+      labs(title = Gtitle, 
+           y = Units, 
+           caption = Gcaption) +
+      scale_x_date(breaks = date_breaks(TimeBreak), labels = date_format("%Y"),
+                   limits = c(S_date, E_date)) + 
+      scale_colour_tableau(palette = "Tableau 10") +
+      facet_grid(Description ~ .) +
+      
+      theme_bw() +
+      theme (legend.position = "none") +
+      theme(axis.text.x = element_text(angle = 270, hjust = 1)) +
+      theme (axis.title.x = element_blank())
+    
+    if(Regression) {g <- g + geom_smooth(method = "lm", se = TRUE, linetype = "dashed", colour = "black")}
+
+```
+

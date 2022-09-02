@@ -18,22 +18,6 @@ library(xts)
 library(gt)
 
 
-
-#<----------------------------------------------------------------------
-#Function - that makes a censored value numeric
-#<----------------------------------------------------------------------
-
-MakeCenNumeric <- function (CenValue) { 
-  
-  CenValue <- stringr::str_replace(CenValue, "[^0-9.-]", "") 
-  Parameter <- as.numeric(CenValue) 
-  
-  return(Parameter) 
-  
-}
-#<-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|
-
-
 ```
 
 In this Chapter we describe, and show the `code`, on how to transform data into a usable selection; a sub-set of information from the database that can be used to create: 
@@ -71,7 +55,7 @@ riven_cond_data <- wtw_data %>%
   filter(Description == "Rivendell WTW", Determinand == "Conductivity") 
 
 # show the data with datatable function from the DT package
-DT::datatable(riven_cond_data, options = list(pageLength = 7), caption = 'Conductivity at Rivendell WTW')
+DT::datatable(riven_cond_data, options = list(pageLength = 5), caption = 'Conductivity at Rivendell WTW')
 
 ```
 In the filtered data `riven_cond_data` we can see that there are now `r add_commas(nrow(riven_cond_data))` observations from a total of `r add_commas(nrow(wtw_data))` in the original database `wtw_data`. All the `riven_cond_data` is shown in the dynamic Table below.  
@@ -84,9 +68,6 @@ The list of data in the Table above is not very informative (if only because it 
 ```{r}
 #| label: tbl-sumstats
 #| tbl-cap: "Summary Statistcs for Conductivity at Rivendell WTW"
-
-# Make the Result column a vector of numbers (no censored values)
-riven_cond_data$Result <- MakeCenNumeric(riven_cond_data$Result)
 
 # The summary statistics are saved into a variable riven_cond_stats 
 riven_cond_stats <- favstats(~Result, data = riven_cond_data)
@@ -118,9 +99,6 @@ A key aspect of _data science_ is visualisation, especially the initial visualis
 ```{r}
 #| label: fig-timecond
 #| fig-cap: "Interactive Time Series Graph of the Conductivity for Rivendell WTW"
-
-# Make the result column a vector of numbers (no censored values)
-riven_cond_data$Result <- MakeCenNumeric(riven_cond_data$Result)
 
 # Make two separate vectors of the date and result (arranged by the date)
 date_column <- riven_cond_data %>% 
