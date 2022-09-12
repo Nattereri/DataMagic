@@ -12,6 +12,8 @@ library(knitr)
 library(scales)
 library(imagic)
 library(glue)
+library(xts)
+library(dygraphs)
 
 ```
 
@@ -82,3 +84,65 @@ ggplot(mirkwood_CC_data, aes(x = Sample_Date, y = Result)) +
   annotation_logticks(sides = "rl")
 
 ```
+
+
+### Area Graphs  
+
+@fig-timeline3 shows an area graph for Chlorine (Free and Combined) at the Mirkwood WTW.  The data is plotted with the htmlwidget[^1] _dygraphs_[^2].  The `wtw_data` in the `imagic` package is filtered for free and total chlorine at the Mirkwood WTW; combined chlorine is then calculated with the formula:
+
+$$Combined_{Chlorine} = Total_{Chlorine} - Free_{Chlorine}$$
+The data is then made into a time series object using the `xts` package before plotting in _dygraphs_.
+
+[^1]: for available html widgets see <https://www.htmlwidgets.org/>.
+[^2]: dygraphs is a JavaScript charting library providing rich facilities for charting time-series data in R <https://rstudio.github.io/dygraphs/>.
+
+```{r}
+#| label: fig-timeline3
+#| fig-cap: "Example Time Line for Combined and Free Chlorine as an Interactive Area Graph"
+#| warning: false
+
+#http://rstudio.github.io/dygraphs/
+
+
+mirkwood_Chlorine_data <- wtw_data %>%
+  filter(Description == "Mirkwood WTW", 
+         Determinand == "Free Chlorine" | Determinand == "Total Chlorine") %>% 
+  select(Sample_Date, Determinand, Result) %>% 
+  group_by(Sample_Date, Determinand) %>% 
+  summarise(chlorine = median(Result, na.rm = T)) %>% 
+  ungroup() %>% 
+  pivot_wider(names_from = "Determinand", values_from = "chlorine") %>% 
+  mutate(`Combined Chloine` = `Total Chlorine` - `Free Chlorine`)
+
+date_column <- mirkwood_Chlorine_data %>% 
+    select(Sample_Date, Free = `Free Chlorine`, Combined = `Combined Chloine`) %>% 
+    arrange(Sample_Date) %>% 
+    pull(Sample_Date)
+
+free_column <- mirkwood_Chlorine_data %>% 
+   select(Sample_Date, Free = `Free Chlorine`, Combined = `Combined Chloine`) %>% 
+    arrange(Sample_Date) %>% 
+    pull(Free) 
+
+combined_column <- mirkwood_Chlorine_data %>% 
+   select(Sample_Date, Free = `Free Chlorine`, Combined = `Combined Chloine`) %>% 
+    arrange(Sample_Date) %>% 
+    pull(Combined) 
+
+
+# Create a time-series object
+free_time_series <- xts(x=free_column, order.by=date_column)
+comb_time_series <- xts(x=combined_column, order.by=date_column)
+
+chlorine__time_series <- cbind(free_time_series, comb_time_series)
+
+dygraph(chlorine__time_series, main = "Chlorine", ylab = "Cl (mg/l)") %>%
+  dySeries("free_time_series", label = "Free") %>%
+  dySeries("comb_time_series", label = "Combined") %>%
+  dyOptions(stackedGraph = TRUE) %>%
+  dyRangeSelector()
+
+```
+
+
+
