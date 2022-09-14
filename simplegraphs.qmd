@@ -90,7 +90,9 @@ ggplot(mirkwood_CC_data, aes(x = Sample_Date, y = Result)) +
 
 @fig-timeline3 shows an area graph for Chlorine (Free and Combined) at the Mirkwood WTW.  The data is plotted with the htmlwidget[^1] _dygraphs_[^2].  The `wtw_data` in the `imagic` package is filtered for free and total chlorine at the Mirkwood WTW; combined chlorine is then calculated with the formula:
 
-$$Combined_{Chlorine} = Total_{Chlorine} - Free_{Chlorine}$$
+$$
+Combined_{Cl} = Total_{Cl} - Free_{Cl}
+$$
 The data is then made into a time series object using the `xts` package before plotting in _dygraphs_.
 
 [^1]: for available html widgets see <https://www.htmlwidgets.org/>.
