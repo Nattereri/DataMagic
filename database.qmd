@@ -1,17 +1,19 @@
-# Databases
+# Example Data
 
 
 ```{r}
-#| include=FALSE
+#| include: false
 
 library(knitr)
 library(tidyverse)
 library(imagic)
 library(broman)
+library(gt)
+library(gtExtras)
 ```
 
 
-## Example Water Quality Data 
+## The `wtw_data` Water Quality dataset 
 
 @tbl-imagicdata shows the structure of the `wtw_data` in the `imagic` package. The data has `r add_commas(nrow(wtw_data))` rows.
 
@@ -22,7 +24,52 @@ library(broman)
 
 wtw_data %>% 
   sample_n(10) %>% 
-  knitr::kable()
+  gt() %>% 
+  tab_style(
+    style = list(
+      cell_fill(color = "black"),
+      cell_text(color = "white", weight = "bold")
+      ),
+    locations = cells_column_labels(
+      columns = c(everything())
+    )
+  ) 
+
+
+```
+
+
+
+```{r}
+#| label: tbl-datacount
+#| tbl-cap: "Water Treatment Works (WTW) and the Number of Determinands in wtw_data"
+#| warning: false
+
+
+wtw_data %>% 
+  mutate(Description = stringr::str_replace(Description, " WTW", "")) %>% 
+  group_by(Description, Determinand) %>% 
+  count() %>% 
+  ungroup() %>% 
+  mutate(n = add_commas(n)) %>% 
+  pivot_wider(names_from = Description, values_from = n) %>% 
+  gt() %>% 
+  tab_style(
+    style = list(
+      cell_fill(color = "black"),
+      cell_text(color = "white", weight = "bold")
+      ),
+    locations = cells_column_labels(
+      columns = c(everything())
+    )
+  ) %>% 
+   cols_align(
+    align = "right",
+    columns = 2:10
+  )
+  # gt_hulk_col_numeric(2:10, trim = TRUE) 
+  #gt_color_rows(2:10, palette = "ggsci::blue_material") 
+
 
 
 ```

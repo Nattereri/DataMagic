@@ -1,0 +1,61 @@
+# Glossary {.unnumbered}
+
+
+## Boxplot
+
+A boxplot is a visual method of showing a distribution of values, it is popular among statisticians and is a useful way to explore data. @fig-boxexample shows the essential outline of the boxplot and the text following explains their relevance:
+
+```{r}
+library(datasets)
+library(timetk)
+library(tidyverse)
+
+data(Nile)
+
+NileData <- timetk::tk_tbl(Nile)
+
+#Add outlier
+outlier <- tibble(index = 1870, value = 1800)
+NileData <- rbind(NileData, outlier) %>% 
+  arrange(index)
+
+```
+
+```{r}
+#| label: fig-boxexample
+#| fig-cap: "Example boxplot with whiskers and outlier"
+#| warning: false
+
+ggplot(NileData, aes(x = "", y = value)) +
+        geom_boxplot(fill = "grey85") +
+        theme(panel.grid.major = element_blank(),
+              panel.grid.minor = element_blank(),
+              axis.title.x = element_blank(),
+              panel.background = element_blank(),
+              axis.title.y = element_blank(),
+              axis.text.x = element_blank(),
+              axis.text.y = element_blank(),
+              axis.ticks = element_blank(),
+              panel.border = element_rect(colour = "black", fill=NA, size=2))
+
+```
+
+
+Each boxplot consists of a box that stretches from the 25th percentile ($Q_1$) of the distribution to the 75th percentile ($Q_3$), a distance known as the interquartile range ($IQR$). In the middle of the box is a line that displays the median, i.e. 50th percentile, of the distribution. These three lines give you a sense of the spread of the distribution and whether or not the distribution is symmetric about the median or skewed to one side. The _dots_ at the end of the boxplot represent outliers There are a number of different rules for determining if a point is an outlier, but the method that R [@R-base] and ggplot [@R-ggplot2] use is the _1.5 rule_. 
+
+If a data point is:
+
+* less than $Q_1 - 1.5 * IQR$  
+* greater than $Q_3+ 1.5 * IQR$  
+
+then that point is classed as an _outlier_. IQR is Inter Quartile Range 
+
+The whiskers are defined as:
+
+* upper whisker = $min(max(x), Q_3 + 1.5 * IQR)$
+
+* lower whisker = $max(min(x), Q_1 - 1.5 * IQR)$
+
+where $IQR = Q_3 - Q_1$, the box length. So the upper whisker is located at the smaller of the maximum x value and $Q_3 + 1.5 * IQR$, whereas the lower whisker is located at the larger of the smallest x value and $Q_1 - 1.5 * IQR$.
+
+Additional information about boxplots can be found <https://en.wikipedia.org/wiki/Box_plot>

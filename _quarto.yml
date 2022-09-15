@@ -13,9 +13,10 @@ book:
     - transformation.qmd
     - simplegraphs.qmd
     - summary.qmd
+    - appendix.qmd
     - references.qmd
 
-bibliography: references.bib
+bibliography: [references.bib, packages.bib]
 
 format:
   html:

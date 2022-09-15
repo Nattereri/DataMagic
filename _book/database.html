@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Data Magic - 2&nbsp; Databases</title>
+<title>Data Magic - 2&nbsp; Example Data</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -128,7 +128,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Databases</span></h1>
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Example Data</span></h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -163,22 +163,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./database.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Databases</span></a>
+  <a href="./database.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Example Data</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./transformation.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Transformation</span></a>
+  <a href="./transformation.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Transforming Data</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./simplegraphs.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Timeline Graphs</span></a>
+  <a href="./simplegraphs.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Graphs of Time</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./summary.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Summary</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./appendix.html" class="sidebar-item-text sidebar-link">Glossary</a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -195,7 +200,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#example-water-quality-data" id="toc-example-water-quality-data" class="nav-link active" data-scroll-target="#example-water-quality-data"> <span class="header-section-number">2.1</span> Example Water Quality Data</a></li>
+  <li><a href="#the-wtw_data-water-quality-dataset" id="toc-the-wtw_data-water-quality-dataset" class="nav-link active" data-scroll-target="#the-wtw_data-water-quality-dataset"> <span class="header-section-number">2.1</span> The <code>wtw_data</code> Water Quality dataset</a></li>
   </ul>
 </nav>
     </div>
@@ -204,7 +209,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Databases</span></h1>
+<h1 class="title d-none d-lg-block"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Example Data</span></h1>
 </div>
 
 
@@ -218,135 +223,1131 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </header>
 
-<section id="example-water-quality-data" class="level2" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="example-water-quality-data"><span class="header-section-number">2.1</span> Example Water Quality Data</h2>
+<section id="the-wtw_data-water-quality-dataset" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="the-wtw_data-water-quality-dataset"><span class="header-section-number">2.1</span> The <code>wtw_data</code> Water Quality dataset</h2>
 <p><a href="#tbl-imagicdata">Table&nbsp;<span>2.1</span></a> shows the structure of the <code>wtw_data</code> in the <code>imagic</code> package. The data has 494,199 rows.</p>
 <div class="cell">
 <details>
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>wtw_data <span class="sc">%&gt;%</span> </span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sample_n</span>(<span class="dv">10</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_style</span>(</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">style =</span> <span class="fu">list</span>(</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>      <span class="fu">cell_fill</span>(<span class="at">color =</span> <span class="st">"black"</span>),</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>      <span class="fu">cell_text</span>(<span class="at">color =</span> <span class="st">"white"</span>, <span class="at">weight =</span> <span class="st">"bold"</span>)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>      ),</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">locations =</span> <span class="fu">cells_column_labels</span>(</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>      <span class="at">columns =</span> <span class="fu">c</span>(<span class="fu">everything</span>())</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  ) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div id="tbl-imagicdata" class="anchored">
-<table class="table table-sm table-striped">
-<caption>Table 2.1: Data From wtw_data in the imagic Package</caption>
-<colgroup>
-<col style="width: 20%">
-<col style="width: 14%">
-<col style="width: 19%">
-<col style="width: 8%">
-<col style="width: 12%">
-<col style="width: 10%">
-<col style="width: 14%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">Description</th>
-<th style="text-align: left;">Sample_Date</th>
-<th style="text-align: left;">Determinand</th>
-<th style="text-align: right;">Result</th>
-<th style="text-align: left;">Units</th>
-<th style="text-align: left;">lessthan</th>
-<th style="text-align: left;">greaterthan</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">Isengard WTW</td>
-<td style="text-align: left;">2012-02-20</td>
-<td style="text-align: left;">Colony Count 37</td>
-<td style="text-align: right;">0.0</td>
-<td style="text-align: left;">mL</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: left;">FALSE</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Mirkwood WTW</td>
-<td style="text-align: left;">2014-07-05</td>
-<td style="text-align: left;">E.coli</td>
-<td style="text-align: right;">0.0</td>
-<td style="text-align: left;">MPN/100mL</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: left;">FALSE</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Minas Tirith WTW</td>
-<td style="text-align: left;">2001-12-27</td>
-<td style="text-align: left;">Temperature</td>
-<td style="text-align: right;">23.2</td>
-<td style="text-align: left;">°C</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: left;">FALSE</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Grey Havens WTW</td>
-<td style="text-align: left;">2001-05-24</td>
-<td style="text-align: left;">Coliforms</td>
-<td style="text-align: right;">0.0</td>
-<td style="text-align: left;">MPN/100mL</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: left;">FALSE</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Edoras WTW</td>
-<td style="text-align: left;">2001-02-08</td>
-<td style="text-align: left;">E.coli</td>
-<td style="text-align: right;">0.0</td>
-<td style="text-align: left;">MPN/100mL</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: left;">FALSE</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Minas Tirith WTW</td>
-<td style="text-align: left;">2000-11-24</td>
-<td style="text-align: left;">Colony Count 21</td>
-<td style="text-align: right;">5.0</td>
-<td style="text-align: left;">mL</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: left;">FALSE</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Grey Havens WTW</td>
-<td style="text-align: left;">2003-03-23</td>
-<td style="text-align: left;">Temperature</td>
-<td style="text-align: right;">22.5</td>
-<td style="text-align: left;">°C</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: left;">FALSE</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Isengard WTW</td>
-<td style="text-align: left;">2014-01-13</td>
-<td style="text-align: left;">E.coli</td>
-<td style="text-align: right;">0.0</td>
-<td style="text-align: left;">MPN/100mL</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: left;">FALSE</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Hobbiton WTW</td>
-<td style="text-align: left;">2003-05-22</td>
-<td style="text-align: left;">Total Chlorine</td>
-<td style="text-align: right;">1.3</td>
-<td style="text-align: left;">mg Cl2/L</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: left;">FALSE</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Dale WTW</td>
-<td style="text-align: left;">2000-03-02</td>
-<td style="text-align: left;">Colony Count 21</td>
-<td style="text-align: right;">0.0</td>
-<td style="text-align: left;">mL</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: left;">FALSE</td>
-</tr>
-</tbody>
+
+<div id="sfrbbikwgd" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#sfrbbikwgd .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#sfrbbikwgd .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#sfrbbikwgd .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#sfrbbikwgd .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#sfrbbikwgd .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#sfrbbikwgd .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#sfrbbikwgd .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#sfrbbikwgd .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#sfrbbikwgd .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#sfrbbikwgd .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#sfrbbikwgd .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#sfrbbikwgd .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#sfrbbikwgd .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#sfrbbikwgd .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#sfrbbikwgd .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#sfrbbikwgd .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#sfrbbikwgd .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#sfrbbikwgd .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#sfrbbikwgd .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#sfrbbikwgd .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#sfrbbikwgd .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#sfrbbikwgd .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#sfrbbikwgd .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#sfrbbikwgd .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#sfrbbikwgd .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#sfrbbikwgd .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#sfrbbikwgd .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#sfrbbikwgd .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#sfrbbikwgd .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#sfrbbikwgd .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#sfrbbikwgd .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#sfrbbikwgd .gt_left {
+  text-align: left;
+}
+
+#sfrbbikwgd .gt_center {
+  text-align: center;
+}
+
+#sfrbbikwgd .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#sfrbbikwgd .gt_font_normal {
+  font-weight: normal;
+}
+
+#sfrbbikwgd .gt_font_bold {
+  font-weight: bold;
+}
+
+#sfrbbikwgd .gt_font_italic {
+  font-style: italic;
+}
+
+#sfrbbikwgd .gt_super {
+  font-size: 65%;
+}
+
+#sfrbbikwgd .gt_two_val_uncert {
+  display: inline-block;
+  line-height: 1em;
+  text-align: right;
+  font-size: 60%;
+  vertical-align: -0.25em;
+  margin-left: 0.1em;
+}
+
+#sfrbbikwgd .gt_footnote_marks {
+  font-style: italic;
+  font-weight: normal;
+  font-size: 75%;
+  vertical-align: 0.4em;
+}
+
+#sfrbbikwgd .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#sfrbbikwgd .gt_slash_mark {
+  font-size: 0.7em;
+  line-height: 0.7em;
+  vertical-align: 0.15em;
+}
+
+#sfrbbikwgd .gt_fraction_numerator {
+  font-size: 0.6em;
+  line-height: 0.6em;
+  vertical-align: 0.45em;
+}
+
+#sfrbbikwgd .gt_fraction_denominator {
+  font-size: 0.6em;
+  line-height: 0.6em;
+  vertical-align: -0.05em;
+}
+</style>
+<table class="gt_table"><caption>Table 2.1:  Data From wtw_data in the imagic Package </caption>
+  
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" style="background-color: #000000; color: #FFFFFF; font-weight: bold;">Description</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" style="background-color: #000000; color: #FFFFFF; font-weight: bold;">Sample_Date</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" style="background-color: #000000; color: #FFFFFF; font-weight: bold;">Determinand</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="background-color: #000000; color: #FFFFFF; font-weight: bold;">Result</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" style="background-color: #000000; color: #FFFFFF; font-weight: bold;">Units</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" style="background-color: #000000; color: #FFFFFF; font-weight: bold;">lessthan</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" style="background-color: #000000; color: #FFFFFF; font-weight: bold;">greaterthan</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td class="gt_row gt_left">Grey Havens WTW</td>
+<td class="gt_row gt_left">2014-03-10</td>
+<td class="gt_row gt_left">Taste</td>
+<td class="gt_row gt_right">NA</td>
+<td class="gt_row gt_left">-</td>
+<td class="gt_row gt_center">FALSE</td>
+<td class="gt_row gt_center">FALSE</td></tr>
+    <tr><td class="gt_row gt_left">Grey Havens WTW</td>
+<td class="gt_row gt_left">2009-08-24</td>
+<td class="gt_row gt_left">Free Chlorine</td>
+<td class="gt_row gt_right">0.1</td>
+<td class="gt_row gt_left">mg Cl2/L</td>
+<td class="gt_row gt_center">FALSE</td>
+<td class="gt_row gt_center">FALSE</td></tr>
+    <tr><td class="gt_row gt_left">Rivendell WTW</td>
+<td class="gt_row gt_left">2004-11-05</td>
+<td class="gt_row gt_left">Conductivity</td>
+<td class="gt_row gt_right">20.5</td>
+<td class="gt_row gt_left">mS/m</td>
+<td class="gt_row gt_center">FALSE</td>
+<td class="gt_row gt_center">FALSE</td></tr>
+    <tr><td class="gt_row gt_left">Rivendell WTW</td>
+<td class="gt_row gt_left">2001-01-15</td>
+<td class="gt_row gt_left">Temperature</td>
+<td class="gt_row gt_right">21.9</td>
+<td class="gt_row gt_left">°C</td>
+<td class="gt_row gt_center">FALSE</td>
+<td class="gt_row gt_center">FALSE</td></tr>
+    <tr><td class="gt_row gt_left">Bree WTW</td>
+<td class="gt_row gt_left">2007-06-11</td>
+<td class="gt_row gt_left">Free Chlorine</td>
+<td class="gt_row gt_right">1.0</td>
+<td class="gt_row gt_left">mg Cl2/L</td>
+<td class="gt_row gt_center">FALSE</td>
+<td class="gt_row gt_center">FALSE</td></tr>
+    <tr><td class="gt_row gt_left">Hobbiton WTW</td>
+<td class="gt_row gt_left">2006-02-01</td>
+<td class="gt_row gt_left">Colour</td>
+<td class="gt_row gt_right">1.0</td>
+<td class="gt_row gt_left">°H</td>
+<td class="gt_row gt_center">TRUE</td>
+<td class="gt_row gt_center">FALSE</td></tr>
+    <tr><td class="gt_row gt_left">Dale WTW</td>
+<td class="gt_row gt_left">2000-11-25</td>
+<td class="gt_row gt_left">Temperature</td>
+<td class="gt_row gt_right">19.3</td>
+<td class="gt_row gt_left">°C</td>
+<td class="gt_row gt_center">FALSE</td>
+<td class="gt_row gt_center">FALSE</td></tr>
+    <tr><td class="gt_row gt_left">Mirkwood WTW</td>
+<td class="gt_row gt_left">2014-07-27</td>
+<td class="gt_row gt_left">Conductivity</td>
+<td class="gt_row gt_right">18.4</td>
+<td class="gt_row gt_left">mS/m</td>
+<td class="gt_row gt_center">FALSE</td>
+<td class="gt_row gt_center">FALSE</td></tr>
+    <tr><td class="gt_row gt_left">Dale WTW</td>
+<td class="gt_row gt_left">2002-05-21</td>
+<td class="gt_row gt_left">Total Chlorine</td>
+<td class="gt_row gt_right">1.8</td>
+<td class="gt_row gt_left">mg Cl2/L</td>
+<td class="gt_row gt_center">FALSE</td>
+<td class="gt_row gt_center">FALSE</td></tr>
+    <tr><td class="gt_row gt_left">Minas Tirith WTW</td>
+<td class="gt_row gt_left">2010-03-23</td>
+<td class="gt_row gt_left">Odour</td>
+<td class="gt_row gt_right">NA</td>
+<td class="gt_row gt_left">-</td>
+<td class="gt_row gt_center">FALSE</td>
+<td class="gt_row gt_center">FALSE</td></tr>
+  </tbody>
+  
+  
 </table>
 </div>
 </div>
+</div>
+</div>
+<div class="cell">
+<details>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>wtw_data <span class="sc">%&gt;%</span> </span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Description =</span> stringr<span class="sc">::</span><span class="fu">str_replace</span>(Description, <span class="st">" WTW"</span>, <span class="st">""</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Description, Determinand) <span class="sc">%&gt;%</span> </span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">n =</span> <span class="fu">add_commas</span>(n)) <span class="sc">%&gt;%</span> </span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> Description, <span class="at">values_from =</span> n) <span class="sc">%&gt;%</span> </span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_style</span>(</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">style =</span> <span class="fu">list</span>(</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>      <span class="fu">cell_fill</span>(<span class="at">color =</span> <span class="st">"black"</span>),</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>      <span class="fu">cell_text</span>(<span class="at">color =</span> <span class="st">"white"</span>, <span class="at">weight =</span> <span class="st">"bold"</span>)</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>      ),</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">locations =</span> <span class="fu">cells_column_labels</span>(</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>      <span class="at">columns =</span> <span class="fu">c</span>(<span class="fu">everything</span>())</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span> </span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>   <span class="fu">cols_align</span>(</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">align =</span> <span class="st">"right"</span>,</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">columns =</span> <span class="dv">2</span><span class="sc">:</span><span class="dv">10</span></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div id="tbl-datacount" class="anchored">
+
+<div id="qflaawdrmq" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#qflaawdrmq .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#qflaawdrmq .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#qflaawdrmq .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#qflaawdrmq .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#qflaawdrmq .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#qflaawdrmq .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#qflaawdrmq .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#qflaawdrmq .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#qflaawdrmq .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#qflaawdrmq .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#qflaawdrmq .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#qflaawdrmq .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#qflaawdrmq .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#qflaawdrmq .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#qflaawdrmq .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#qflaawdrmq .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#qflaawdrmq .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#qflaawdrmq .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#qflaawdrmq .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#qflaawdrmq .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#qflaawdrmq .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#qflaawdrmq .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#qflaawdrmq .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#qflaawdrmq .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#qflaawdrmq .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#qflaawdrmq .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#qflaawdrmq .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#qflaawdrmq .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#qflaawdrmq .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#qflaawdrmq .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#qflaawdrmq .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#qflaawdrmq .gt_left {
+  text-align: left;
+}
+
+#qflaawdrmq .gt_center {
+  text-align: center;
+}
+
+#qflaawdrmq .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#qflaawdrmq .gt_font_normal {
+  font-weight: normal;
+}
+
+#qflaawdrmq .gt_font_bold {
+  font-weight: bold;
+}
+
+#qflaawdrmq .gt_font_italic {
+  font-style: italic;
+}
+
+#qflaawdrmq .gt_super {
+  font-size: 65%;
+}
+
+#qflaawdrmq .gt_two_val_uncert {
+  display: inline-block;
+  line-height: 1em;
+  text-align: right;
+  font-size: 60%;
+  vertical-align: -0.25em;
+  margin-left: 0.1em;
+}
+
+#qflaawdrmq .gt_footnote_marks {
+  font-style: italic;
+  font-weight: normal;
+  font-size: 75%;
+  vertical-align: 0.4em;
+}
+
+#qflaawdrmq .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#qflaawdrmq .gt_slash_mark {
+  font-size: 0.7em;
+  line-height: 0.7em;
+  vertical-align: 0.15em;
+}
+
+#qflaawdrmq .gt_fraction_numerator {
+  font-size: 0.6em;
+  line-height: 0.6em;
+  vertical-align: 0.45em;
+}
+
+#qflaawdrmq .gt_fraction_denominator {
+  font-size: 0.6em;
+  line-height: 0.6em;
+  vertical-align: -0.05em;
+}
+</style>
+<table class="gt_table"><caption>Table 2.2:  Water Treatment Works (WTW) and the Number of Determinands in wtw_data </caption>
+  
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" style="background-color: #000000; color: #FFFFFF; font-weight: bold;">Determinand</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="background-color: #000000; color: #FFFFFF; font-weight: bold;">Bree</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="background-color: #000000; color: #FFFFFF; font-weight: bold;">Dale</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="background-color: #000000; color: #FFFFFF; font-weight: bold;">Edoras</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="background-color: #000000; color: #FFFFFF; font-weight: bold;">Grey Havens</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="background-color: #000000; color: #FFFFFF; font-weight: bold;">Hobbiton</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="background-color: #000000; color: #FFFFFF; font-weight: bold;">Isengard</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="background-color: #000000; color: #FFFFFF; font-weight: bold;">Minas Tirith</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="background-color: #000000; color: #FFFFFF; font-weight: bold;">Mirkwood</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="background-color: #000000; color: #FFFFFF; font-weight: bold;">Rivendell</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td class="gt_row gt_left">Coliforms</td>
+<td class="gt_row gt_right">6,289</td>
+<td class="gt_row gt_right">1,857</td>
+<td class="gt_row gt_right">6,271</td>
+<td class="gt_row gt_right">6,078</td>
+<td class="gt_row gt_right">6,308</td>
+<td class="gt_row gt_right">3,281</td>
+<td class="gt_row gt_right">6,265</td>
+<td class="gt_row gt_right">4,471</td>
+<td class="gt_row gt_right">6,264</td></tr>
+    <tr><td class="gt_row gt_left">Colony Count 21</td>
+<td class="gt_row gt_right">1,340</td>
+<td class="gt_row gt_right">1,583</td>
+<td class="gt_row gt_right">1,325</td>
+<td class="gt_row gt_right">4,267</td>
+<td class="gt_row gt_right">4,487</td>
+<td class="gt_row gt_right">2,487</td>
+<td class="gt_row gt_right">4,439</td>
+<td class="gt_row gt_right">2,669</td>
+<td class="gt_row gt_right">4,441</td></tr>
+    <tr><td class="gt_row gt_left">Colony Count 37</td>
+<td class="gt_row gt_right">4,476</td>
+<td class="gt_row gt_right">1,614</td>
+<td class="gt_row gt_right">4,467</td>
+<td class="gt_row gt_right">4,282</td>
+<td class="gt_row gt_right">4,501</td>
+<td class="gt_row gt_right">2,506</td>
+<td class="gt_row gt_right">4,459</td>
+<td class="gt_row gt_right">2,689</td>
+<td class="gt_row gt_right">4,459</td></tr>
+    <tr><td class="gt_row gt_left">Colour</td>
+<td class="gt_row gt_right">1,355</td>
+<td class="gt_row gt_right">1,296</td>
+<td class="gt_row gt_right">1,344</td>
+<td class="gt_row gt_right">2,015</td>
+<td class="gt_row gt_right">6,308</td>
+<td class="gt_row gt_right">3,268</td>
+<td class="gt_row gt_right">2,125</td>
+<td class="gt_row gt_right">2,846</td>
+<td class="gt_row gt_right">6,262</td></tr>
+    <tr><td class="gt_row gt_left">Conductivity</td>
+<td class="gt_row gt_right">3,673</td>
+<td class="gt_row gt_right">1,841</td>
+<td class="gt_row gt_right">3,661</td>
+<td class="gt_row gt_right">3,473</td>
+<td class="gt_row gt_right">6,302</td>
+<td class="gt_row gt_right">3,280</td>
+<td class="gt_row gt_right">3,621</td>
+<td class="gt_row gt_right">4,503</td>
+<td class="gt_row gt_right">6,245</td></tr>
+    <tr><td class="gt_row gt_left">E.coli</td>
+<td class="gt_row gt_right">6,291</td>
+<td class="gt_row gt_right">1,865</td>
+<td class="gt_row gt_right">6,276</td>
+<td class="gt_row gt_right">6,085</td>
+<td class="gt_row gt_right">6,314</td>
+<td class="gt_row gt_right">3,283</td>
+<td class="gt_row gt_right">6,267</td>
+<td class="gt_row gt_right">4,481</td>
+<td class="gt_row gt_right">6,269</td></tr>
+    <tr><td class="gt_row gt_left">Free Chlorine</td>
+<td class="gt_row gt_right">6,299</td>
+<td class="gt_row gt_right">1,872</td>
+<td class="gt_row gt_right">6,278</td>
+<td class="gt_row gt_right">6,085</td>
+<td class="gt_row gt_right">6,320</td>
+<td class="gt_row gt_right">3,293</td>
+<td class="gt_row gt_right">6,280</td>
+<td class="gt_row gt_right">4,490</td>
+<td class="gt_row gt_right">6,273</td></tr>
+    <tr><td class="gt_row gt_left">Odour</td>
+<td class="gt_row gt_right">292</td>
+<td class="gt_row gt_right">783</td>
+<td class="gt_row gt_right">291</td>
+<td class="gt_row gt_right">5,112</td>
+<td class="gt_row gt_right">5,240</td>
+<td class="gt_row gt_right">2,216</td>
+<td class="gt_row gt_right">5,214</td>
+<td class="gt_row gt_right">2,184</td>
+<td class="gt_row gt_right">5,215</td></tr>
+    <tr><td class="gt_row gt_left">pH</td>
+<td class="gt_row gt_right">2,934</td>
+<td class="gt_row gt_right">818</td>
+<td class="gt_row gt_right">2,961</td>
+<td class="gt_row gt_right">5,115</td>
+<td class="gt_row gt_right">5,246</td>
+<td class="gt_row gt_right">2,223</td>
+<td class="gt_row gt_right">5,215</td>
+<td class="gt_row gt_right">3,456</td>
+<td class="gt_row gt_right">5,217</td></tr>
+    <tr><td class="gt_row gt_left">Taste</td>
+<td class="gt_row gt_right">291</td>
+<td class="gt_row gt_right">771</td>
+<td class="gt_row gt_right">290</td>
+<td class="gt_row gt_right">5,074</td>
+<td class="gt_row gt_right">5,164</td>
+<td class="gt_row gt_right">2,166</td>
+<td class="gt_row gt_right">5,180</td>
+<td class="gt_row gt_right">1,601</td>
+<td class="gt_row gt_right">5,192</td></tr>
+    <tr><td class="gt_row gt_left">Temperature</td>
+<td class="gt_row gt_right">3,645</td>
+<td class="gt_row gt_right">1,869</td>
+<td class="gt_row gt_right">3,550</td>
+<td class="gt_row gt_right">6,087</td>
+<td class="gt_row gt_right">6,324</td>
+<td class="gt_row gt_right">3,291</td>
+<td class="gt_row gt_right">6,279</td>
+<td class="gt_row gt_right">4,511</td>
+<td class="gt_row gt_right">6,005</td></tr>
+    <tr><td class="gt_row gt_left">Total Chlorine</td>
+<td class="gt_row gt_right">6,301</td>
+<td class="gt_row gt_right">1,870</td>
+<td class="gt_row gt_right">6,281</td>
+<td class="gt_row gt_right">6,087</td>
+<td class="gt_row gt_right">6,324</td>
+<td class="gt_row gt_right">3,292</td>
+<td class="gt_row gt_right">6,278</td>
+<td class="gt_row gt_right">4,492</td>
+<td class="gt_row gt_right">6,274</td></tr>
+    <tr><td class="gt_row gt_left">Turbidity</td>
+<td class="gt_row gt_right">7,142</td>
+<td class="gt_row gt_right">2,696</td>
+<td class="gt_row gt_right">7,112</td>
+<td class="gt_row gt_right">6,854</td>
+<td class="gt_row gt_right">7,157</td>
+<td class="gt_row gt_right">4,122</td>
+<td class="gt_row gt_right">7,118</td>
+<td class="gt_row gt_right">5,367</td>
+<td class="gt_row gt_right">7,096</td></tr>
+  </tbody>
+  
+  
+</table>
+</div>
+</div>
+</div>
+<details>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>  <span class="co"># gt_hulk_col_numeric(2:10, trim = TRUE) </span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="co">#gt_color_rows(2:10, palette = "ggsci::blue_material") </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 </div>
 
 
@@ -440,7 +1441,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   </div>
   <div class="nav-page nav-page-next">
       <a href="./transformation.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Transformation</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Transforming Data</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

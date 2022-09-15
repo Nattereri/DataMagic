@@ -1,4 +1,4 @@
-# Timeline Graphs {#ChapSGraphs}
+# Graphs of Time {#ChapSGraphs}
 
 
 ```{r}
@@ -21,7 +21,7 @@ library(dygraphs)
 
 This chapter illustrates the range of graphs that can help describe the hidden relationships in the drinking water quality data over time.  
 
-## Plots of Determinands against Time 
+## Scatter Plots
 
 ### Determinand on a Linear Scale 
 
@@ -86,7 +86,7 @@ ggplot(mirkwood_CC_data, aes(x = Sample_Date, y = Result)) +
 ```
 
 
-### Area Graphs  
+## Area Graphs  
 
 @fig-timeline3 shows an area graph for Chlorine (Free and Combined) at the Mirkwood WTW.  The data is plotted with the htmlwidget[^1] _dygraphs_[^2].  The `wtw_data` in the `imagic` package is filtered for free and total chlorine at the Mirkwood WTW; combined chlorine is then calculated with the formula:
 
@@ -147,4 +147,37 @@ dygraph(chlorine__time_series, main = "Chlorine", ylab = "Cl (mg/l)") %>%
 ```
 
 
+## Box Plots
 
+
+
+```{r}
+#| label: fig-boxmonths
+#| fig-cap: "Example Time Line for Combined and Free Chlorine as an Interactive Area Graph"
+#| warning: false
+
+# This helps make the Month factor plot in order
+month_levels <- c("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec")
+
+wtw_data %>% 
+  # filter for colour at Hobbiton WTW
+  filter(Determinand == "Temperature", Description == "Hobbiton WTW") %>% 
+  # create month column and make a factor so plot in the right order
+  mutate(Month = lubridate::month(Sample_Date, label = TRUE),
+         Month = factor(Month, levels = month_levels, ordered = TRUE)) %>% 
+  ggplot(aes(x= Month, y = Result)) +
+    geom_boxplot(fill = "steelblue") +
+  labs(y = "Water Temerature (\u00B0C)") +
+  theme_bw() +
+  theme (legend.position = "none",
+         axis.text.x = element_text(),
+         axis.text.y = element_text(),
+         axis.title.y = element_text(),
+         axis.title.x = element_blank(),
+         panel.grid.minor = element_blank(),
+         panel.grid.major.y = element_line(colour = "grey80", linetype = "solid", size = 0.1), 
+         panel.grid.minor.y = element_blank(),
+         panel.grid.major.x = element_line(colour = "grey80", linetype = "solid", size = 0.1))
+  
+
+```

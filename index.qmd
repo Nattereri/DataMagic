@@ -8,3 +8,26 @@ This web book is an update to the __WRC Research Project Number K5/2730//3__. Si
 __Why South Africa needs Data Science__  
 
 Water Utilities are known for being data rich organisations. Water Utilities collect raw water and process (treatment) data, chemical dosage rate data and flow records, operational monitoring data, treatment plant data, compliance data for final water reservoirs and distribution systems, water quality at the final contact tank, distribution reservoirs, network and consumer complaint information.  Many of the larger water utilities have online instrumentation such as Supervisory Control and Data Acquisition (SCADA) which collects information on flow and quality parameters which is used by the process control staff for operational purposes and quality assurance and control.
+
+```{r}
+#| echo=FALSE,  
+#| eval=FALSE
+
+knitr::write_bib(c('base',
+                   'tidyverse',
+                   'suncalc',
+                   'ggplot2',
+                   'dplyr',
+                   'lubridate',
+                   'stringr',
+                   'broman',
+                   'knitr',
+                   'gt',
+                   'readr',
+                   'scales',
+                   'readxl',
+                   'mosaic',
+                   'kableExtra',
+                   'flextable'), 'packages.bib')
+```
+
