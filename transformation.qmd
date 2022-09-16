@@ -89,7 +89,7 @@ riven_cond_stats %>%
 
 ```
 
-Summary statistics for the `Conductivity` for all WTW is shown in @tbl-wtwcond and to make the table easier to read the median value highlighted in a graduated scale.
+Summary statistics for the `Conductivity` for all WTW is shown in @tbl-wtwcond and to make the table easier to read, the median column is highlighted with a graduated colour scale.
 
 ```{r}
 #| label: tbl-wtwcond
