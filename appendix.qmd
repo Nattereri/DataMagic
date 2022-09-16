@@ -6,6 +6,7 @@
 A boxplot is a visual method of showing a distribution of values, it is popular among statisticians and is a useful way to explore data. @fig-boxexample shows the essential outline of the boxplot and the text following explains their relevance:
 
 ```{r}
+#| include: false
 library(datasets)
 library(timetk)
 library(tidyverse)

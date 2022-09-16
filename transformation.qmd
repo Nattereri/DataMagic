@@ -16,6 +16,7 @@ library(dygraphs)
 library(xts)
 
 library(gt)
+library(gtExtras)
 
 
 ```
@@ -62,7 +63,7 @@ In the filtered data `riven_cond_data` we can see that there are now `r add_comm
 
 ## Summary Statistics
 
-The list of data in the Table above is not very informative (if only because it is difficult to see all the data at one time); to gain a better understanding of the `Conductivity` data, summary statistics can be produced. The code below uses the `mosaic` package to calculate some _favourite_ stats using the function `favstats`; the summary statistics for the `Conductivity` for `Rivendell WTW` is shown in @tbl-sumstats. 
+The list of data in the Table above is not very informative (if only because it is difficult to see all the data at one time); to gain a better understanding of the `Conductivity` data, summary statistics can be produced. The code below uses the `mosaic` package to calculate some _favourite_ stats using the function `favstats`; the summary statistics for the `Conductivity` for `Rivendell WTW` is shown in @tbl-sumstats.
 
 
 ```{r}
@@ -80,15 +81,45 @@ riven_cond_stats %>%
   tab_style(
     style = list(
       cell_fill(color = "black"),
-      cell_text(color = "white"),
-      cell_text(weight = "bold")
-      ),
+      cell_text(color = "white", weight = "bold")),
     locations = cells_column_labels(
       columns = c(everything())
     )
   )
 
 ```
+
+Summary statistics for the `Conductivity` for all WTW is shown in @tbl-wtwcond and to make the table easier to read the median value highlighted in a graduated scale.
+
+```{r}
+#| label: tbl-wtwcond
+#| tbl-cap: "Summary Statistcs for Conductivity at All WTW"
+#| warning: false
+
+cond_data <- wtw_data %>% 
+  filter(Determinand == "Conductivity") %>% 
+  mutate(Description = factor(Description))
+
+# The summary statistics are saved into a variable riven_cond_stats 
+cond_stats <- favstats(Result~Description, data = cond_data)
+
+# riven_cond_stats is made into a the table (using the code below)
+cond_stats %>% 
+  # Create the table with the gt package
+  gt() %>% 
+  # Style the header to black fill and white text
+  tab_style(
+    style = list(
+      cell_fill(color = "black"),
+      cell_text(color = "white", weight = "bold")),
+    locations = cells_column_labels(
+      columns = c(everything())
+    )
+  ) %>% 
+  gt_color_rows(median, palette = "ggsci::blue_material")
+
+```
+
 
 
 
