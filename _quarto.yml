@@ -11,8 +11,10 @@ book:
     - intro.qmd
     - database.qmd
     - transformation.qmd
+    - aggregation.qmd 
     - simplegraphs.qmd
-    - summary.qmd
+    - statistics.qmd
+    - reporting.qmd
     - appendix.qmd
     - references.qmd
 

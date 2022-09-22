@@ -1,4 +1,4 @@
-# Graphs of Time {#ChapSGraphs}
+# Visualisation
 
 
 ```{r}
@@ -22,9 +22,9 @@ library(ggsci)
 
 This chapter illustrates the range of graphs that can help describe the hidden relationships in the drinking water quality data over time.  
 
-## Scatter Plots
+## Graphs of Time {#ChapSGraphs}
 
-### Determinand on a Linear Scale 
+### Scatter Plot: Determinand on a Linear Scale 
 
 An example determinand time line using a linear scale is shown in @fig-timeline1 for temperature at _Mirkwood WTW_. Temperatures would normally be plotted using a linear scale; other determinands that would _generally_ be plotted on a linear scale are:
 
@@ -41,7 +41,7 @@ An example determinand time line using a linear scale is shown in @fig-timeline1
 
 # filter the wtw_data with the filter function and the dplyr package
 mirkwood_temp_data <- wtw_data %>%
-  filter(Description == "Mirkwood WTW", Determinand == "Temperature")
+  filter(Description == "Mirkwood", Determinand == "Temperature")
 
 ggplot(mirkwood_temp_data, aes(x = Sample_Date, y = Result)) +
   geom_point(size = 1, alpha = 0.9, colour = "steelblue") +
@@ -57,7 +57,7 @@ ggplot(mirkwood_temp_data, aes(x = Sample_Date, y = Result)) +
 
 ```
 
-### Determinand on a Log Scale  
+### Scatter Plot: Determinand on a Log Scale  
 
 An example determinand time line using a log scale is shown in @fig-timeline2 for _Colony Count 21°C_ at _Mirkwood WTW_. By convention, and clarity, microbiological determinands are displayed on a log10 scale.
 
@@ -69,7 +69,7 @@ An example determinand time line using a log scale is shown in @fig-timeline2 fo
 
 # filter the wtw_data with the filter function and the dplyr package
 mirkwood_CC_data <- wtw_data %>%
-  filter(Description == "Mirkwood WTW", Determinand == "Colony Count 21")
+  filter(Description == "Mirkwood", Determinand == "Colony Count 21")
 
 ggplot(mirkwood_CC_data, aes(x = Sample_Date, y = Result)) +
   geom_point(size = 1, alpha = 0.9, colour = "yellow4") +
@@ -112,7 +112,7 @@ The data is then made into a time series object using the `xts` package before p
 
 
 mirkwood_Chlorine_data <- wtw_data %>%
-  filter(Description == "Mirkwood WTW", 
+  filter(Description == "Mirkwood", 
          Determinand == "Free Chlorine" | Determinand == "Total Chlorine") %>% 
   select(Sample_Date, Determinand, Result) %>% 
   group_by(Sample_Date, Determinand) %>% 
@@ -167,7 +167,7 @@ month_levels <- c("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep",
 
 wtw_data %>% 
   # filter for colour at Hobbiton WTW
-  filter(Determinand == "Temperature", Description == "Hobbiton WTW") %>% 
+  filter(Determinand == "Temperature", Description == "Hobbiton") %>% 
   # create month column and make a factor so plot in the right order
   mutate(Month = lubridate::month(Sample_Date, label = TRUE),
          Month = factor(Month, levels = month_levels, ordered = TRUE)) %>% 
@@ -201,7 +201,7 @@ wtw_data %>%
          Year = lubridate::year(Sample_Date)) %>% 
   # filter for colour at Hobbiton WTW
   filter(Determinand == "Temperature", 
-         Description == "Hobbiton WTW",
+         Description == "Hobbiton",
          Year < 2005) %>% 
   ggplot(aes(x= Month, y = Result, fill = factor(Year))) +
     geom_boxplot() +
@@ -240,7 +240,7 @@ wtw_data %>%
          MonthDay = lubridate::mday(Sample_Date)) %>% 
   # filter for colour at Hobbiton WTW
   filter(Determinand == "Temperature", 
-         Description == "Hobbiton WTW",
+         Description == "Hobbiton",
          Year < 2005) %>% 
   ggplot(aes(x = MonthDay, y = Month, fill = Result)) +
     geom_tile() +

@@ -1,4 +1,4 @@
-# Manipulating Data
+# Aggregating Data
 
 ```{r}
 #| include=FALSE

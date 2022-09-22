@@ -10,10 +10,62 @@ library(imagic)
 library(broman)
 library(gt)
 library(gtExtras)
+library(glue)
+library(leaflet)
 ```
 
+## The `WwTW_hydro` Data
 
-## The `wtw_data` Water Quality dataset 
+```{r}
+#| label: fig-hydrodatamap
+#| fig-cap: "Map of the `WwTW_hydro` Data"
+
+
+WwTW_hydro %>%
+    mutate(Popup_text = glue("{WWTP_NAME} - population served {add_commas(POP_SERVED)}")) %>% 
+    leaflet() %>% 
+    addTiles() %>% 
+    addCircleMarkers(
+      lng = ~LON_WWTP, lat = ~LAT_WWTP,
+      radius = 7,
+      #color = ~pal(Species),
+      stroke = TRUE, fillOpacity = 0.7,
+      popup = ~Popup_text, label = ~Popup_text
+    )
+
+```
+
+@fig-hydrodatamap shows the spacial extent of the `WwTW_hydro` data in the `imagic` package. The data has information on `r add_commas(nrow(WwTW_hydro))` Wastewater Treatment Works (WwTW); hovering on the map will _pop up_ the names of the works and population served. The data is a subset of South Africa from the global wastewater treatment plant database used in the paper published in 2022[^1] 
+
+[^1]:Ehalt Macedo, H., Lehner, B., Nicell, J. A., Grill, G., Li, J., Limtong, A., Shakya, R.: Distribution and characteristics of wastewater treatment plants within the global river network. Earth System Science Data. 2022.
+
+Other information in the  `WwTW_hydro` data:
+
+* ORG_ID		ID from national/regional dataset (see reference paper for more information)
+* WWTP_NAME	Name of the WwTW from national/regional dataset (empty if not reported)
+* COUNTRY		Country in which WwTW is located
+* CNTRY_ISO	Country ISO
+* LAT_WWTP	Latitude of reported WwTW location
+* LON_WWTP	Longitude of reported WwTW location
+* QUAL_LOC	Quality indicator related to reported WwTW location (see SI of reference paper for more information): 1 = high (tests indicated >80% of reported WwTW locations in country/region to be accurate); 2 = medium (tests indicated between 50% and 80% of reported WwTW locations in country/region to be accurate); 3 = low (tests indicated <50% of reported WwTW locations in country/region to be accurate); 4 = Quality of WwTW locations in country/region not analysed
+* LAT_OUT		Latitude of the estimated outfall location (see reference paper for more information)
+* LON_OUT		Longitude of the estimated outfall location (see reference paper for more information)
+* STATUS		Status of the WwTW from national/regional dataset: Closed, Construction Completed, Decommissioned, Non-Operational, Operational, Projected, Proposed, Under Construction, Not Reported (assumed operational)
+* POP_SERVED	Population served by the WwTW
+* QUAL_POP	Quality indicator related to the attribute "population served" (see reference paper for more information): 1 = Reported as ‘population served’ by national/regional dataset; 2 = Reported as ‘population equivalent’ by national/regional dataset; 3 = Estimated (with wastewater discharge available); 4 = Estimated (without wastewater discharge available)
+* WASTE_DIS	Treated wastewater discharged by the WwTW in m3 d-1
+* QUAL_WASTE	Quality indicator related to the attribute "Treated wastewater discharged" (see reference paper for more information): 1 = Reported as ‘treated’ by national/regional dataset; 2 = Reported as ‘design capacity’ by national/regional dataset; 3 = Reported but type not identified; 4 = Estimated
+* LEVEL		Level of treatment of the WwTW: Primary, Secondary, Advanced
+* QUAL_LEVEL	Quality indicator related to the attribute "level of treatment" (see reference paper for more information): 1 = Reported by national/regional dataset; 2 = Estimated
+* DF		Estimated dilution factor (empty if estimated outfall location is the ocean or large lake; see reference paper for more information)
+* HYRIV_ID	ID of associated river reach in RiverATLAS at estimated outfall location (link to HydroATLAS database; empty if estimated outfall location is the ocean or an endorheic sink)
+* RIVER_DIS	Estimated river discharge at the WwTW outfall location in m3 s-1 (derived from HydroATLAS database; empty if estimated outfall location is the ocean)
+* COAST_10KM	1 = Estimated outfall location within 10 km of the ocean or a large lake (surface area larger than 500 km2); 0 = Estimated outfall location further than 10 km of the ocean or a large lake (surface area larger than 500 km2)
+* COAST_50KM	1 = Estimated outfall location within 50 km of the ocean or a large lake (surface area larger than 500 km2); 0 = Estimated outfall location further than 50 km of the ocean or a large lake (surface area larger than 500 km2)
+* DESIGN_CAP	Design capacity of WwTW as reported in national/regional dataset (empty if not reported)
+* QUAL_CAP	Quality indicator related to the attribute "design capacity": 1 = Reported as design capacity in m3 d-1; 2 = Reported as design capacity in 'population equivalent'; 3 = Not reported
+
+## The `wtw_data` Water Treament Quality Data
 
 @tbl-imagicdata shows the structure of the `wtw_data` in the `imagic` package. The data has `r add_commas(nrow(wtw_data))` rows.
 
