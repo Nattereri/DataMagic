@@ -15,6 +15,7 @@ library(glue)
 library(xts)
 library(dygraphs)
 library(ggsci)
+library(plotly)
 
 ```
 
@@ -222,12 +223,41 @@ wtw_data %>%
 
 ```
 
+### Interactive Box Plots
 
-## Tile Graphs
+@fig-plotlybox shows a box plot of monthly turbidity, it was drawn with the plotly library[^3]. Hovering the mouse over a box will reveal the turbidity statistics for that month and year; toggling the year in the legend will remove (or add) the monthly box's for that year, and; at any view the graph can be copied to the clipboard. 
+
+[^3]: For more information see <https://plotly.com/r/>
 
 
 ```{r}
-#| label: fig-boxyearmonthyear
+#| label: fig-plotlybox
+#| fig-cap: "Interactive Boxplot of Monthly Temperature at Hobbiton WTW"
+#| fig.height: 7
+#| warning: false
+
+
+wtw_data %>% 
+  # create month column and make a factor so plot in the right order
+  mutate(Month = lubridate::month(Sample_Date, label = TRUE),
+         Year = lubridate::year(Sample_Date)) %>% 
+  # filter for colour at Hobbiton WTW
+  filter(Determinand == "Turbidity", 
+         Description == "Rivendell",
+         Year < 2007) %>% 
+  plot_ly(x = ~Month, y = ~Result, color = ~factor(Year), type = "box", colors = "Dark2") %>% 
+  layout(boxmode = "group",
+         title = "Rivendell WTW Turbidty 2000- 2009",
+         xaxis = list(title=""),
+         yaxis = list(title="Turbidity (ntu)"))
+
+
+```
+
+## Tile Graphs
+
+```{r}
+#| label: fig-tileyearmonthyear
 #| fig-cap: "Tile Graph of Daily Temperature at Hobbiton WTW"
 #| warning: false
 #| fig.height: 8
