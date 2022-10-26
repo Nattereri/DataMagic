@@ -254,6 +254,51 @@ wtw_data %>%
 
 ```
 
+
+### Violin Plots
+
+Violin plots are a variation of the box plot; they visualise the distribution of numeric data and are especially useful when you want to make a comparison of distributions between groups. @fig-plotlyviolin shows the distribution of colour monitoring between the water treatment works.
+
+```{r}
+#| label: fig-plotlyviolin
+#| fig-cap: "Interactive Violin Plot of Colour at the Water Treatment Works"
+#| fig.height: 7
+#| warning: false
+
+
+fig <- wtw_data %>%
+  filter(Determinand == "Colour") %>% 
+  plot_ly(
+    y = ~Description,
+    x = ~Result,
+    split = ~Description,
+    type = 'violin',
+    orientation = 'h',
+    box = list(
+      visible = T
+    ),
+    meanline = list(
+      visible = T
+    )
+  ) 
+
+fig <- fig %>%
+  layout(
+    xaxis = list(
+      title = "Colour (\u00B0H)"
+    ),
+    yaxis = list(
+      title = "",
+      zeroline = F
+    ),
+    title = "Water Treatment Works Colour"
+  )
+
+fig
+
+```
+
+
 ## Tile Graphs
 
 ```{r}
