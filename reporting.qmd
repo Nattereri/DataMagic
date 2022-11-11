@@ -1,3 +1,36 @@
 # Reporting
 
-Automate reports with no copy and paste!
+
+
+Reports can be produced, ***with one mouse click***, from the LIMS data. _One click_ reporting is achieved through literate programming [@knuth84]; a procedure of mixing code and descriptive writing, in order to undertake and explain data analysis simultaneously in the same document. This is an efficient practice of workflow! 
+
+
+![Workflow In Practice](images/workflow.png)
+
+## Why Do This?
+
+The advantages of this approach to LIMS data are appreciable:
+
+1. Workflow
+    i) Reduces (and can eliminate) any copy and paste activity
+    ii) Reports are easily created (_one click_) with new data or updated with revised data 
+    iii) The time and effort producing reports can be reduced by several orders of magnitude! 
+2. Reproducible
+    i) The report is reproducible by yourself (and others[^2]); convenient when returning to a project after many months or years!  
+3. Open Source
+    i) The Quarto or R Markdown file, the literate program document, is simple text that can be edited with any text editor as well as user friendly integrated development environments like RStudio[^4].  
+    ii) The software[^3] which reads the literate program document and makes the report in: Word, PDF, PowerPoint or Dashboard are open source and free to use. 
+
+[^2]: the exact results can be reproduced if given access to the original data and Quarto® document containing the literate programming text of code and descriptive writing.
+
+[^3]: e.g. R <https://www.r-project.org/>, Python <https://www.python.org/>, R Markdown <https://rmarkdown.rstudio.com/>, Quarto® <https://quarto.org/>, RStudio <https://posit.co/>, Jupyter <https://jupyter.org/>.
+
+
+[^4]: RStudio is now known as Posit <https://posit.co/>; and now embraces R and Python.  
+
+What's the disadvantage?
+
+1. Coding
+    i)  The literate program document requires coding skills to write (these web pages are designed to help with the coding).
+
+

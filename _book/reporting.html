@@ -15,6 +15,25 @@ span.underline{text-decoration: underline;}
 div.column{display: inline-block; vertical-align: top; width: 50%;}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
 </style>
 
 
@@ -143,7 +162,13 @@ ul.task-list{list-style: none;}
 </nav>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#why-do-this" id="toc-why-do-this" class="nav-link active" data-scroll-target="#why-do-this"> <span class="header-section-number">7.1</span> Why Do This?</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -164,9 +189,58 @@ ul.task-list{list-style: none;}
 
 </header>
 
-<p>Automate reports with no copy and paste!</p>
+<p>Reports can be produced, <strong><em>with one mouse click</em></strong>, from the LIMS data. <em>One click</em> reporting is achieved through literate programming <span class="citation" data-cites="knuth84">(<a href="references.html#ref-knuth84" role="doc-biblioref">Knuth 1984</a>)</span>; a procedure of mixing code and descriptive writing, in order to undertake and explain data analysis simultaneously in the same document. This is an efficient practice of workflow!</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/workflow.png" class="img-fluid figure-img"></p>
+<p></p><figcaption aria-hidden="true" class="figure-caption">Workflow In Practice</figcaption><p></p>
+</figure>
+</div>
+<section id="why-do-this" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="why-do-this"><span class="header-section-number">7.1</span> Why Do This?</h2>
+<p>The advantages of this approach to LIMS data are appreciable:</p>
+<ol type="1">
+<li>Workflow
+<ol type="i">
+<li>Reduces (and can eliminate) any copy and paste activity</li>
+<li>Reports are easily created (<em>one click</em>) with new data or updated with revised data</li>
+<li>The time and effort producing reports can be reduced by several orders of magnitude!</li>
+</ol></li>
+<li>Reproducible
+<ol type="i">
+<li>The report is reproducible by yourself (and others<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>); convenient when returning to a project after many months or years!<br>
+</li>
+</ol></li>
+<li>Open Source
+<ol type="i">
+<li>The Quarto or R Markdown file, the literate program document, is simple text that can be edited with any text editor as well as user friendly integrated development environments like RStudio<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>.<br>
+</li>
+<li>The software<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> which reads the literate program document and makes the report in: Word, PDF, PowerPoint or Dashboard are open source and free to use.</li>
+</ol></li>
+</ol>
+<p>What’s the disadvantage?</p>
+<ol type="1">
+<li>Coding
+<ol type="i">
+<li>The literate program document requires coding skills to write (these web pages are designed to help with the coding).</li>
+</ol></li>
+</ol>
 
 
+<div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography" style="display: none">
+<div id="ref-knuth84" class="csl-entry" role="doc-biblioentry">
+Knuth, Donald E. 1984. <span>“Literate Programming.”</span> <em>Comput. J.</em> 27 (2): 97–111. <a href="https://doi.org/10.1093/comjnl/27.2.97">https://doi.org/10.1093/comjnl/27.2.97</a>.
+</div>
+</div>
+</section>
+<section class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1" role="doc-endnote"><p>the exact results can be reproduced if given access to the original data and Quarto® document containing the literate programming text of code and descriptive writing.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2" role="doc-endnote"><p>RStudio is now known as Posit <a href="https://posit.co/" class="uri">https://posit.co/</a>; and now embraces R and Python.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3" role="doc-endnote"><p>e.g.&nbsp;R <a href="https://www.r-project.org/" class="uri">https://www.r-project.org/</a>, Python <a href="https://www.python.org/" class="uri">https://www.python.org/</a>, R Markdown <a href="https://rmarkdown.rstudio.com/" class="uri">https://rmarkdown.rstudio.com/</a>, Quarto® <a href="https://quarto.org/" class="uri">https://quarto.org/</a>, RStudio <a href="https://posit.co/" class="uri">https://posit.co/</a>, Jupyter <a href="https://jupyter.org/" class="uri">https://jupyter.org/</a>.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
