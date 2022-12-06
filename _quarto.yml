@@ -27,6 +27,7 @@ format:
     linestretch: 1.5
     code-fold: true
     code-summary: "Show the code"
+    highlight-style: arrow
   pdf:
     documentclass: scrreprt
 

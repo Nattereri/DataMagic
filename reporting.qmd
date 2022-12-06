@@ -16,7 +16,7 @@ The advantages of this approach to LIMS data are appreciable:
     ii) Reports are easily created (_one click_) with new data or updated with revised data 
     iii) The time and effort producing reports can be reduced by several orders of magnitude! 
 2. Reproducible
-    i) The report is reproducible by yourself (and others[^2]); convenient when returning to a project after many months or years!  
+    i) The report is reproducible by yourself (and others[^2]); convenient when returning to a report after many months or years!  
 3. Open Source
     i) The Quarto or R Markdown file, the literate program document, is simple text that can be edited with any text editor as well as user friendly integrated development environments like RStudio[^4].  
     ii) The software[^3] which reads the literate program document and makes the report in: Word, PDF, PowerPoint or Dashboard are open source and free to use. 
@@ -32,5 +32,107 @@ What's the disadvantage?
 
 1. Coding
     i)  The literate program document requires coding skills to write (these web pages are designed to help with the coding).
+    ii) Coding skills in ecology are generally underdeveloped (although university education of ecology is increasingly taking a coding approach to data science); _it should be noted little or no coding skills are required to render the report._
 
 
+## Bat Report from Tidy Data
+
+The complete R Markdown text (the .Rmd file) that produces a simple report from the `wtw_data` tidy data[^4] is shown below; it can be copied to the clip board and rendered (knitted) into the Word report illustrated in @fig-wordreport.
+
+
+[^4]: From the imagic package.
+
+
+````markdown
+
+---
+title: "Simple Report"
+output: 
+  officedown::rdocx_document: default
+date: "06 December, 2022"
+author: "A Scientist"
+---
+
+`r ''```{r include=FALSE}
+
+library(knitr)
+library(tidyverse)
+library(imagic)
+library(broman)
+library(glue)
+library(mosaic)
+library(flextable)
+library(officer)
+
+
+if (!require(devtools)) {
+  install.packages("devtools")
+}
+
+# If iBats is not installed load from Github
+if (!require(imagic)) {
+  devtools::install_github("Nattereri/iBats")
+}
+library(imagic)
+
+knitr::opts_chunk$set(echo = FALSE, warnings = FALSE, message = FALSE)
+knitr::opts_chunk$set(fig.cap = TRUE)
+
+
+```
+
+__CONTENTS__
+<!---BLOCK_TOC--->
+__List of Figures__
+<!---BLOCK_TOC{seq_id: 'fig'}--->
+__List of Tables__
+<!---BLOCK_TOC{seq_id: 'tab'}--->
+
+`r ''```{r include=FALSE}
+##### Load your TIDY data here:
+# TidyData <- read_csv("YourTidyData.csv", col_names = TRUE)
+
+# Tidy bat data - example data from the imagic package
+TidyData <- wtw_data
+```
+
+\newpage
+# TABLES
+
+Table \@ref(tab:table01) shows summary statistics of conductivity for each Water Treatment Works (WTW) in the `wtw_data` data from the _imagic_ package.
+
+
+`r ''```{r tab.id="table01", tab.cap="Species and Number of Bat Passes"}
+
+cond_data <- TidyData %>% 
+  filter(Determinand == "Conductivity") %>% 
+  mutate(WTW = factor(Description))
+
+# The summary statistics are saved into a variable riven_cond_stats 
+cond_stats <- favstats(Result~WTW, data = cond_data)
+
+# riven_cond_stats is made into a the table (using the code below)
+cond_stats %>%  
+  flextable() %>%
+  fontsize(size = 9.5, part = "all") %>% 
+  width(j = 1, width = 1) %>%
+  width(j = 2:10, width = 0.6) %>%
+  italic(j = 1, italic = TRUE, part = "body") %>%
+  bg(bg = "black", part = "header") %>%
+  color(color = "white", part = "header") %>% 
+  colformat_int(j = 9, big.mark = " ") %>% 
+  colformat_double(j = 2:8, digits = 2)
+
+
+```
+
+````
+
+::: {#fig-wordreport layout-ncol=1}
+
+![](images/page1.png)
+![](images/page2.png)
+![](images/page3.png)
+
+Water Treatment Works Word Report
+:::

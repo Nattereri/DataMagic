@@ -155,7 +155,7 @@ dygraph(chlorine__time_series, main = "Chlorine", ylab = "Cl (mg/l)") %>%
 
 ## Box Plots
 
-Box plots are a useful way of looking at data, as the provide an instant summary; such as 50% of the values are within the box and the line across the box displays the median. @fig-boxmonths and fig-boxmonthyear look at the water temperature at Hobbiton WTW. 
+Box plots are a useful way of looking at data, as the provide an instant summary; such as 50% of the values are within the box and the line across the box displays the median. @fig-boxmonths and @fig-boxmonthyear look at the water temperature at Hobbiton WTW. 
 
 
 ```{r}
