@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-0.9.587">
+<meta name="generator" content="quarto-1.2.269">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -11,10 +11,15 @@
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-span.underline{text-decoration: underline;}
-div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -53,7 +58,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -66,7 +71,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -117,7 +122,7 @@ div.csl-indent {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -225,12 +230,15 @@ div.csl-indent {
 </nav>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc">
+        <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#why-do-this" id="toc-why-do-this" class="nav-link active" data-scroll-target="#why-do-this"> <span class="header-section-number">7.1</span> Why Do This?</a></li>
-  <li><a href="#bat-report-from-tidy-data" id="toc-bat-report-from-tidy-data" class="nav-link" data-scroll-target="#bat-report-from-tidy-data"> <span class="header-section-number">7.2</span> Bat Report from Tidy Data</a></li>
+  <li><a href="#why-do-this" id="toc-why-do-this" class="nav-link active" data-scroll-target="#why-do-this"><span class="toc-section-number">7.1</span>  Why Do This?</a></li>
+  <li><a href="#report-from-tidy-data" id="toc-report-from-tidy-data" class="nav-link" data-scroll-target="#report-from-tidy-data"><span class="toc-section-number">7.2</span>  Report from Tidy Data</a>
+  <ul class="collapse">
+  <li><a href="#sec-wordrmd" id="toc-sec-wordrmd" class="nav-link" data-scroll-target="#sec-wordrmd"><span class="toc-section-number">7.2.1</span>  Microsoft Word</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -247,17 +255,18 @@ div.csl-indent {
 <div class="quarto-title-meta">
 
     
+  
     
   </div>
   
 
 </header>
 
-<p>Reports can be produced, <strong><em>with one mouse click</em></strong>, from the LIMS data. <em>One click</em> reporting is achieved through literate programming <span class="citation" data-cites="knuth84">(<a href="references.html#ref-knuth84" role="doc-biblioref">Knuth 1984</a>)</span>; a procedure of mixing code and descriptive writing, in order to undertake and explain data analysis simultaneously in the same document. This is an efficient practice of workflow!</p>
+<p>Reports can be produced, <strong><em>with one mouse click</em></strong>, from the LIMS data. <em>One click</em> reporting is achieved through literate programming <span class="citation" data-cites="knuth84">(<a href="references.html#ref-knuth84" role="doc-biblioref">Knuth 1984</a>)</span>; a procedure of mixing code and descriptive writing, in order to undertake and explain data analysis simultaneously in the same document. This is an efficient practice of workflow! A one click Word report see <a href="#sec-wordrmd"><span>Section&nbsp;7.2.1</span></a>.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/workflow.png" class="img-fluid figure-img"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption">Workflow In Practice</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Workflow In Practice</figcaption><p></p>
 </figure>
 </div>
 <section id="why-do-this" class="level2" data-number="7.1">
@@ -291,8 +300,10 @@ div.csl-indent {
 </ol></li>
 </ol>
 </section>
-<section id="bat-report-from-tidy-data" class="level2" data-number="7.2">
-<h2 data-number="7.2" class="anchored" data-anchor-id="bat-report-from-tidy-data"><span class="header-section-number">7.2</span> Bat Report from Tidy Data</h2>
+<section id="report-from-tidy-data" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="report-from-tidy-data"><span class="header-section-number">7.2</span> Report from Tidy Data</h2>
+<section id="sec-wordrmd" class="level3" data-number="7.2.1">
+<h3 data-number="7.2.1" class="anchored" data-anchor-id="sec-wordrmd"><span class="header-section-number">7.2.1</span> Microsoft Word</h3>
 <p>The complete R Markdown text (the .Rmd file) that produces a simple report from the <code>wtw_data</code> tidy data<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> is shown below; it can be copied to the clip board and rendered (knitted) into the Word report illustrated in <a href="#fig-wordreport">Figure&nbsp;<span>7.1</span></a>.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>---</span>
@@ -382,7 +393,7 @@ div.csl-indent {
 <p><img src="images/page1.png" class="img-fluid figure-img"> <img src="images/page2.png" class="img-fluid figure-img"> <img src="images/page3.png" class="img-fluid figure-img"></p>
 </div>
 </div>
-<p></p><figcaption aria-hidden="true" class="figure-caption">Figure 7.1: Water Treatment Works Word Report</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;7.1: Water Treatment Works Word Report</figcaption><p></p>
 </figure>
 </div>
 
@@ -393,19 +404,38 @@ Knuth, Donald E. 1984. <span>“Literate Programming.”</span> <em>Comput. J.</
 </div>
 </div>
 </section>
-<section class="footnotes footnotes-end-of-document" role="doc-endnotes">
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
 <hr>
 <ol>
-<li id="fn1" role="doc-endnote"><p>the exact results can be reproduced if given access to the original data and Quarto® document containing the literate programming text of code and descriptive writing.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2" role="doc-endnote"><p>From the imagic package.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn3" role="doc-endnote"><p>e.g.&nbsp;R <a href="https://www.r-project.org/" class="uri">https://www.r-project.org/</a>, Python <a href="https://www.python.org/" class="uri">https://www.python.org/</a>, R Markdown <a href="https://rmarkdown.rstudio.com/" class="uri">https://rmarkdown.rstudio.com/</a>, Quarto® <a href="https://quarto.org/" class="uri">https://quarto.org/</a>, RStudio <a href="https://posit.co/" class="uri">https://posit.co/</a>, Jupyter <a href="https://jupyter.org/" class="uri">https://jupyter.org/</a>.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn4" role="doc-endnote"><p>From the imagic package.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn1"><p>the exact results can be reproduced if given access to the original data and Quarto® document containing the literate programming text of code and descriptive writing.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>From the imagic package.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>e.g.&nbsp;R <a href="https://www.r-project.org/" class="uri">https://www.r-project.org/</a>, Python <a href="https://www.python.org/" class="uri">https://www.python.org/</a>, R Markdown <a href="https://rmarkdown.rstudio.com/" class="uri">https://rmarkdown.rstudio.com/</a>, Quarto® <a href="https://quarto.org/" class="uri">https://quarto.org/</a>, RStudio <a href="https://posit.co/" class="uri">https://posit.co/</a>, Jupyter <a href="https://jupyter.org/" class="uri">https://jupyter.org/</a>.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>From the imagic package.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
   const icon = "";
   const anchorJS = new window.AnchorJS();
   anchorJS.options = {
@@ -427,7 +457,24 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
     button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
     setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
       button.setAttribute("title", currentTitle);
       button.classList.remove('code-copy-button-checked');
     }, 1000);
@@ -455,31 +502,50 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   for (var i=0; i<noterefs.length; i++) {
     const ref = noterefs[i];
     tippyHover(ref, function() {
-      let href = ref.getAttribute('href');
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
     });
   }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
   var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
   for (var i=0; i<bibliorefs.length; i++) {
     const ref = bibliorefs[i];
-    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
-    tippyHover(ref, function() {
-      var popup = window.document.createElement('div');
-      cites.forEach(function(cite) {
-        var citeDiv = window.document.createElement('div');
-        citeDiv.classList.add('hanging-indent');
-        citeDiv.classList.add('csl-entry');
-        var biblioDiv = window.document.getElementById('ref-' + cite);
-        if (biblioDiv) {
-          citeDiv.innerHTML = biblioDiv.innerHTML;
-        }
-        popup.appendChild(citeDiv);
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
       });
-      return popup.innerHTML;
-    });
+    }
   }
 });
 </script>

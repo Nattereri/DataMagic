@@ -2,7 +2,7 @@
 
 
 
-Reports can be produced, ***with one mouse click***, from the LIMS data. _One click_ reporting is achieved through literate programming [@knuth84]; a procedure of mixing code and descriptive writing, in order to undertake and explain data analysis simultaneously in the same document. This is an efficient practice of workflow! 
+Reports can be produced, ***with one mouse click***, from the LIMS data. _One click_ reporting is achieved through literate programming [@knuth84]; a procedure of mixing code and descriptive writing, in order to undertake and explain data analysis simultaneously in the same document. This is an efficient practice of workflow! A one click Word report see @sec-wordrmd.
 
 
 ![Workflow In Practice](images/workflow.png)
@@ -35,7 +35,9 @@ What's the disadvantage?
     ii) Coding skills in ecology are generally underdeveloped (although university education of ecology is increasingly taking a coding approach to data science); _it should be noted little or no coding skills are required to render the report._
 
 
-## Bat Report from Tidy Data
+## Report from Tidy Data
+
+###  Microsoft Word {#sec-wordrmd}
 
 The complete R Markdown text (the .Rmd file) that produces a simple report from the `wtw_data` tidy data[^4] is shown below; it can be copied to the clip board and rendered (knitted) into the Word report illustrated in @fig-wordreport.
 
